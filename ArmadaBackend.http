@@ -1,0 +1,6 @@
+@ArmadaBackend_HostAddress = http://localhost:5034
+
+GET {{ArmadaBackend_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
