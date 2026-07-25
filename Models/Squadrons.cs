@@ -1,5 +1,6 @@
-﻿namespace ArmadaBackend
+﻿namespace ArmadaBackend.Models
 {
+    //az összes squadront tárolja, ez majd át kell hogy menjen db-be
     public class Squadrons
     {
         public Dictionary<string, (int Pont, string Leiras)> RebelSquadrons { get; set; }
