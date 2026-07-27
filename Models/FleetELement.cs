@@ -1,7 +1,7 @@
 ﻿namespace ArmadaBackend.Models
 {
     //egy felszerelt hajót reprezentál a listában
-    public class FleetELement
+    public class FleetElement
     {
         public int Id { get; set; }
         public Ship Ship { get; set; }
