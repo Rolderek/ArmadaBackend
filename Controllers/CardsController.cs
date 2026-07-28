@@ -57,6 +57,17 @@ namespace ArmadaBackend.Controllers
                 .ToListAsync();
         }
 
+        [HttpGet("GAR")]
+        public async Task<ActionResult<IEnumerable<Card>>> GetGARCards()
+        {
+            return await _context.Cards.Where(
+                c => c.Category == CardCategory.CommanderImperial ||
+                c.Category == CardCategory.OfficerImperial ||
+                c.Category == CardCategory.TitleImperial ||
+                c.Category == CardCategory.SuperweaponImperial)
+                .ToListAsync();
+        }
+
         [HttpGet("category/{id:int}")]
         public async Task<ActionResult<IEnumerable<Card>>> GetAllCardFromThisCategory([FromRoute] int id)
         {
