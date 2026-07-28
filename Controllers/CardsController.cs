@@ -28,10 +28,33 @@ namespace ArmadaBackend.Controllers
             return await _context.Cards.ToListAsync();
         }
 
-        [HttpGet("rebel")] //kibővíteni majd minden kategóriával ami rebel
+        [HttpGet("NameContains{name}")]
+        public async Task<ActionResult<IEnumerable<Card>>> GetAllCard(string name)
+        {
+            return await _context.Cards.Where(
+                c => c.Name.ToLower().Contains(name.ToLower())
+                ).ToListAsync();
+        }
+
+        [HttpGet("rebel")]
         public async Task<ActionResult<IEnumerable<Card>>> GetRebelCards()
         {
-            return await _context.Cards.Where(c => c.Category == (CardCategory)0).ToListAsync();
+            return await _context.Cards.Where(
+                c => c.Category == CardCategory.CommanderRebel ||
+                c.Category == CardCategory.OfficerRebel ||
+                c.Category == CardCategory.TitleRebel)
+                .ToListAsync();
+        }
+
+        [HttpGet("imperial")]
+        public async Task<ActionResult<IEnumerable<Card>>> GetImperialCards()
+        {
+            return await _context.Cards.Where(
+                c => c.Category == CardCategory.CommanderImperial ||
+                c.Category == CardCategory.OfficerImperial ||
+                c.Category == CardCategory.TitleImperial ||
+                c.Category == CardCategory.SuperweaponImperial)
+                .ToListAsync();
         }
 
         [HttpGet("category/{id:int}")]
