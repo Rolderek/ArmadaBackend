@@ -2,7 +2,10 @@
 {
     public enum CardCategory
     {
-        Commander, 
+        CommanderRebel, 
+        CommanderImperial, 
+        CommanderGAR, 
+        CommanderCIS, 
         DefensiveRetrofit, 
         ExperimentalRetrofit,
         FleetCommand,
