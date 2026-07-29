@@ -109,8 +109,6 @@ namespace ArmadaBackend.Controllers
         }
 
         [HttpPut("CardCategoryOnly")]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<Card>> ChangeOnlyCardCategory(int id, int newCategoryId)
         {
             var eC = _context.Cards.FirstOrDefault(c => c.Id == id);
@@ -121,6 +119,54 @@ namespace ArmadaBackend.Controllers
             else
             {
                 eC.Category = (CardCategory)newCategoryId;
+                await _context.SaveChangesAsync();
+                return Ok(eC);
+            }
+        }
+
+        [HttpPut("ChangeNameOnly")]
+        public async Task<ActionResult<Card>> ChangeNameOnly(int id, string newName)
+        {
+            var eC = _context.Cards.FirstOrDefault(c => c.Id == id);
+            if (eC == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                eC.Name = newName;
+                await _context.SaveChangesAsync();
+                return Ok(eC);
+            }
+        }
+
+        [HttpPut("ChangeDescOnly")]
+        public async Task<ActionResult<Card>> ChangeDescOnly(int id, string desc)
+        {
+            var eC = _context.Cards.FirstOrDefault(c => c.Id == id);
+            if (eC == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                eC.Description = desc;
+                await _context.SaveChangesAsync();
+                return Ok(eC);
+            }
+        }
+
+        [HttpPut("ChangePointsOnly")]
+        public async Task<ActionResult<Card>> ChangePointOnly(int id, int point)
+        {
+            var eC = _context.Cards.FirstOrDefault(c => c.Id == id);
+            if (eC == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                eC.Point = point;
                 await _context.SaveChangesAsync();
                 return Ok(eC);
             }
