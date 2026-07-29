@@ -108,6 +108,24 @@ namespace ArmadaBackend.Controllers
             }
         }
 
+        [HttpPut("CardCategoryOnly")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<Card>> ChangeOnlyCardCategory(int id, int newCategoryId)
+        {
+            var eC = _context.Cards.FirstOrDefault(c => c.Id == id);
+            if (eC == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                eC.Category = (CardCategory)newCategoryId;
+                await _context.SaveChangesAsync();
+                return Ok(eC);
+            }
+        }
+
         [HttpDelete("id:int")]
         public async Task<ActionResult> DeleteCard(int id)
         {
