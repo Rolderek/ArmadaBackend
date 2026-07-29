@@ -8,6 +8,6 @@ namespace ArmadaBackend.Models
         public int Id { get; set; }
         public string? Name { get; set; }
         public int Point { get; set; }
-        public List<CardCategory> CardsType { get; set; } = new List<CardCategory>();
+        public List<ShipCard> CardsType { get; set; } = new List<ShipCard>();
     }
 }
