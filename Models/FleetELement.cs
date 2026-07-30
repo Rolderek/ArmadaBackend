@@ -6,7 +6,7 @@
         public int Id { get; set; }
         public Ship Ship { get; set; }
         public List<Card> Cards { get; set; } = new List<Card>();
-        public int Point => (Ship?.Point ?? 0) + Cards.Sum(c => c.Point); //összérték számítással
+        public int Point => (Ship?.Point ?? 0) + Cards.Sum(c => c.Point);
 
         //kapcsolatok:
         public int FleetId { get; set; }
