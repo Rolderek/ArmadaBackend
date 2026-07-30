@@ -3,6 +3,7 @@ using ArmadaBackend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ArmadaBackend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260730124954_ShipControllerAddedWorkedVersion")]
+    partial class ShipControllerAddedWorkedVersion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1404,9 +1407,6 @@ namespace ArmadaBackend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("FactinId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -1421,154 +1421,132 @@ namespace ArmadaBackend.Migrations
                         new
                         {
                             Id = 1,
-                            FactinId = 0,
                             Name = "GR-75 Medium Transports",
                             Point = 18
                         },
                         new
                         {
                             Id = 2,
-                            FactinId = 0,
                             Name = "GR-75 Combat Retrofits",
                             Point = 24
                         },
                         new
                         {
                             Id = 3,
-                            FactinId = 0,
                             Name = "CR90 Corvette A",
                             Point = 44
                         },
                         new
                         {
                             Id = 4,
-                            FactinId = 0,
                             Name = "CR90 Corvette B",
                             Point = 39
                         },
                         new
                         {
                             Id = 5,
-                            FactinId = 0,
                             Name = "Hammerhead Scout Corvette",
                             Point = 41
                         },
                         new
                         {
                             Id = 6,
-                            FactinId = 0,
                             Name = "Hammerhead Torpedo Corvette",
                             Point = 36
                         },
                         new
                         {
                             Id = 7,
-                            FactinId = 0,
                             Name = "MC30c Scout Torpedo Frigate",
                             Point = 69
                         },
                         new
                         {
                             Id = 8,
-                            FactinId = 0,
                             Name = "MC30c Torpedo Frigate",
                             Point = 63
                         },
                         new
                         {
                             Id = 9,
-                            FactinId = 0,
                             Name = "Nebulon-B Escort Frigate",
                             Point = 57
                         },
                         new
                         {
                             Id = 10,
-                            FactinId = 0,
                             Name = "Nebulon-B Support Refit",
                             Point = 51
                         },
                         new
                         {
                             Id = 11,
-                            FactinId = 0,
                             Name = "Pelta-class Assault Ship",
                             Point = 56
                         },
                         new
                         {
                             Id = 12,
-                            FactinId = 0,
                             Name = "Pelta-class Command Ship",
                             Point = 60
                         },
                         new
                         {
                             Id = 13,
-                            FactinId = 0,
                             Name = "Assault Frigate Mark II A",
                             Point = 81
                         },
                         new
                         {
                             Id = 14,
-                            FactinId = 0,
                             Name = "Assault Frigate Mark II B",
                             Point = 72
                         },
                         new
                         {
                             Id = 15,
-                            FactinId = 0,
                             Name = "MC75 Armored Cruiser",
                             Point = 104
                         },
                         new
                         {
                             Id = 16,
-                            FactinId = 0,
                             Name = "MC75 Ordnance Cruiser",
                             Point = 100
                         },
                         new
                         {
                             Id = 17,
-                            FactinId = 0,
                             Name = "MC80 Assault Cruiser",
                             Point = 114
                         },
                         new
                         {
                             Id = 18,
-                            FactinId = 0,
                             Name = "MC80 Command Cruiser",
                             Point = 106
                         },
                         new
                         {
                             Id = 19,
-                            FactinId = 0,
                             Name = "MC80 Battle Cruiser",
                             Point = 103
                         },
                         new
                         {
                             Id = 20,
-                            FactinId = 0,
                             Name = "MC80 Star Cruiser",
                             Point = 96
                         },
                         new
                         {
                             Id = 21,
-                            FactinId = 0,
                             Name = "Starhawk-class Battleship Mark I",
                             Point = 140
                         },
                         new
                         {
                             Id = 22,
-                            FactinId = 0,
                             Name = "Starhawk-class Battleship Mark II",
                             Point = 150
                         });

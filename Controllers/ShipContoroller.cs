@@ -22,6 +22,22 @@ namespace ArmadaBackend.Controllers
             return await _context.Ships.ToListAsync();
         }
 
+        [HttpGet("ShipNames")]
+        public async Task<ActionResult<IEnumerable<string>>> GetShipNames()
+        {
+            return await _context.Ships.Select(c => c.Name).ToListAsync();
+        }
 
+        [HttpGet("ShipWithSimilarName{name}")]
+        public async Task<ActionResult<IEnumerable<Ship>>> GetShipWithSimilarName(string name)
+        {
+            var ships = await _context.Ships.Where(
+                c => c.Name.ToLower().Contains(name.ToLower())).ToListAsync();
+            if (ships != null)
+            {
+                return Ok(ships);
+            }
+            return NotFound();
+        }
     }
 }

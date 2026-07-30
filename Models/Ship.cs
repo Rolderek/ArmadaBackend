@@ -6,6 +6,7 @@ namespace ArmadaBackend.Models
     public class Ship
     {
         public int Id { get; set; }
+        public int FactinId { get; set; }
         public string? Name { get; set; }
         public int Point { get; set; }
         

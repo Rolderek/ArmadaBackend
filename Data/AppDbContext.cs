@@ -191,34 +191,34 @@ namespace ArmadaBackend.Data
             // 2. Hajók inicializálása
             modelBuilder.Entity<Ship>().HasData(
                 // --- FLOTILLÁK ---
-                new Ship { Id = 1, Name = "GR-75 Medium Transports", Point = 18 },
-                new Ship { Id = 2, Name = "GR-75 Combat Retrofits", Point = 24 },
+                new Ship { Id = 1, FactinId = 0, Name = "GR-75 Medium Transports", Point = 18 },
+                new Ship { Id = 2, FactinId = 0, Name = "GR-75 Combat Retrofits", Point = 24 },
 
                 // --- KIS HAJÓK ---
-                new Ship { Id = 3, Name = "CR90 Corvette A", Point = 44 },
-                new Ship { Id = 4, Name = "CR90 Corvette B", Point = 39 },
-                new Ship { Id = 5, Name = "Hammerhead Scout Corvette", Point = 41 },
-                new Ship { Id = 6, Name = "Hammerhead Torpedo Corvette", Point = 36 },
-                new Ship { Id = 7, Name = "MC30c Scout Torpedo Frigate", Point = 69 },
-                new Ship { Id = 8, Name = "MC30c Torpedo Frigate", Point = 63 },
-                new Ship { Id = 9, Name = "Nebulon-B Escort Frigate", Point = 57 },
-                new Ship { Id = 10, Name = "Nebulon-B Support Refit", Point = 51 },
-                new Ship { Id = 11, Name = "Pelta-class Assault Ship", Point = 56 },
-                new Ship { Id = 12, Name = "Pelta-class Command Ship", Point = 60 },
+                new Ship { Id = 3, FactinId = 0, Name = "CR90 Corvette A", Point = 44 },
+                new Ship { Id = 4, FactinId = 0,  Name = "CR90 Corvette B", Point = 39 },
+                new Ship { Id = 5, FactinId = 0,  Name = "Hammerhead Scout Corvette", Point = 41 },
+                new Ship { Id = 6, FactinId = 0,  Name = "Hammerhead Torpedo Corvette", Point = 36 },
+                new Ship { Id = 7, FactinId = 0,  Name = "MC30c Scout Torpedo Frigate", Point = 69 },
+                new Ship { Id = 8, FactinId = 0,  Name = "MC30c Torpedo Frigate", Point = 63 },
+                new Ship { Id = 9, FactinId = 0, Name = "Nebulon-B Escort Frigate", Point = 57 },
+                new Ship { Id = 10, FactinId = 0, Name = "Nebulon-B Support Refit", Point = 51 },
+                new Ship { Id = 11, FactinId = 0, Name = "Pelta-class Assault Ship", Point = 56 },
+                new Ship { Id = 12, FactinId = 0, Name = "Pelta-class Command Ship", Point = 60 },
 
                 // --- KÖZEPES HAJÓK ---
-                new Ship { Id = 13, Name = "Assault Frigate Mark II A", Point = 81 },
-                new Ship { Id = 14, Name = "Assault Frigate Mark II B", Point = 72 },
+                new Ship { Id = 13, FactinId = 0,  Name = "Assault Frigate Mark II A", Point = 81 },
+                new Ship { Id = 14, FactinId = 0, Name = "Assault Frigate Mark II B", Point = 72 },
 
                 // --- NAGY HAJÓK ---
-                new Ship { Id = 15, Name = "MC75 Armored Cruiser", Point = 104 },
-                new Ship { Id = 16, Name = "MC75 Ordnance Cruiser", Point = 100 },
-                new Ship { Id = 17, Name = "MC80 Assault Cruiser", Point = 114 },
-                new Ship { Id = 18, Name = "MC80 Command Cruiser", Point = 106 },
-                new Ship { Id = 19, Name = "MC80 Battle Cruiser", Point = 103 },
-                new Ship { Id = 20, Name = "MC80 Star Cruiser", Point = 96 },
-                new Ship { Id = 21, Name = "Starhawk-class Battleship Mark I", Point = 140 },
-                new Ship { Id = 22, Name = "Starhawk-class Battleship Mark II", Point = 150 }
+                new Ship { Id = 15, FactinId = 0,  Name = "MC75 Armored Cruiser", Point = 104 },
+                new Ship { Id = 16, FactinId = 0,  Name = "MC75 Ordnance Cruiser", Point = 100 },
+                new Ship { Id = 17, FactinId = 0,  Name = "MC80 Assault Cruiser", Point = 114 },
+                new Ship { Id = 18, FactinId = 0,  Name = "MC80 Command Cruiser", Point = 106 },
+                new Ship { Id = 19, FactinId = 0,  Name = "MC80 Battle Cruiser", Point = 103 },
+                new Ship { Id = 20, FactinId = 0,  Name = "MC80 Star Cruiser", Point = 96 },
+                new Ship { Id = 21, FactinId = 0,  Name = "Starhawk-class Battleship Mark I", Point = 140 },
+                new Ship { Id = 22, FactinId = 0, Name = "Starhawk-class Battleship Mark II", Point = 150 }
             );
 
             // 3. Hajó-kártya fejlesztési slotok
