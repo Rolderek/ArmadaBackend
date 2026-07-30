@@ -1,6 +1,4 @@
-﻿
-
-using ArmadaBackend.Data;
+﻿using ArmadaBackend.Data;
 using ArmadaBackend.Enums;
 using ArmadaBackend.Models;
 using Microsoft.AspNetCore.Components;
