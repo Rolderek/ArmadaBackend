@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ArmadaBackend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260803142022_HajoKaratyakTeljes")]
-    partial class HajoKaratyakTeljes
+    [Migration("20260803143048_HajoKartyakTeljes")]
+    partial class HajoKartyakTeljes
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
