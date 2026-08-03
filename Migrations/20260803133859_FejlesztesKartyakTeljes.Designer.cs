@@ -3,6 +3,7 @@ using ArmadaBackend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ArmadaBackend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260803133859_FejlesztesKartyakTeljes")]
+    partial class FejlesztesKartyakTeljes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -2521,7 +2524,7 @@ namespace ArmadaBackend.Migrations
                         {
                             Id = 7,
                             FactinId = 0,
-                            Name = "MC30c Scout Frigate",
+                            Name = "MC30c Scout Torpedo Frigate",
                             Point = 69,
                             Size = 1
                         },
@@ -2553,7 +2556,7 @@ namespace ArmadaBackend.Migrations
                         {
                             Id = 11,
                             FactinId = 0,
-                            Name = "Modified Pelta-class Assault Ship",
+                            Name = "Pelta-class Assault Ship",
                             Point = 56,
                             Size = 1
                         },
@@ -2561,7 +2564,7 @@ namespace ArmadaBackend.Migrations
                         {
                             Id = 12,
                             FactinId = 0,
-                            Name = "Modified Pelta-class Command Ship",
+                            Name = "Pelta-class Command Ship",
                             Point = 60,
                             Size = 1
                         },
@@ -2570,7 +2573,7 @@ namespace ArmadaBackend.Migrations
                             Id = 13,
                             FactinId = 0,
                             Name = "Assault Frigate Mark II A",
-                            Point = 77,
+                            Point = 81,
                             Size = 2
                         },
                         new
@@ -2586,7 +2589,7 @@ namespace ArmadaBackend.Migrations
                             Id = 15,
                             FactinId = 0,
                             Name = "MC75 Armored Cruiser",
-                            Point = 99,
+                            Point = 104,
                             Size = 3
                         },
                         new
@@ -2594,7 +2597,7 @@ namespace ArmadaBackend.Migrations
                             Id = 16,
                             FactinId = 0,
                             Name = "MC75 Ordnance Cruiser",
-                            Point = 95,
+                            Point = 100,
                             Size = 3
                         },
                         new
@@ -2602,7 +2605,7 @@ namespace ArmadaBackend.Migrations
                             Id = 17,
                             FactinId = 0,
                             Name = "MC80 Assault Cruiser",
-                            Point = 110,
+                            Point = 114,
                             Size = 3
                         },
                         new
@@ -2610,7 +2613,7 @@ namespace ArmadaBackend.Migrations
                             Id = 18,
                             FactinId = 0,
                             Name = "MC80 Command Cruiser",
-                            Point = 102,
+                            Point = 106,
                             Size = 3
                         },
                         new
@@ -2643,358 +2646,6 @@ namespace ArmadaBackend.Migrations
                             FactinId = 0,
                             Name = "Starhawk-class Battleship Mark II",
                             Point = 150,
-                            Size = 3
-                        },
-                        new
-                        {
-                            Id = 23,
-                            FactinId = 0,
-                            Name = "Providence-class Carrier",
-                            Point = 95,
-                            Size = 3
-                        },
-                        new
-                        {
-                            Id = 24,
-                            FactinId = 1,
-                            Name = "Gozanti-class Cruisers",
-                            Point = 23,
-                            Size = 0
-                        },
-                        new
-                        {
-                            Id = 25,
-                            FactinId = 1,
-                            Name = "Gozanti-class Assault Carriers",
-                            Point = 26,
-                            Size = 0
-                        },
-                        new
-                        {
-                            Id = 26,
-                            FactinId = 1,
-                            Name = "Raider I-class Corvette",
-                            Point = 44,
-                            Size = 1
-                        },
-                        new
-                        {
-                            Id = 27,
-                            FactinId = 1,
-                            Name = "Raider II-class Corvette",
-                            Point = 48,
-                            Size = 1
-                        },
-                        new
-                        {
-                            Id = 28,
-                            FactinId = 1,
-                            Name = "Arquitens-class Light Cruiser",
-                            Point = 52,
-                            Size = 1
-                        },
-                        new
-                        {
-                            Id = 29,
-                            FactinId = 1,
-                            Name = "Arquitens-class Command Cruiser",
-                            Point = 55,
-                            Size = 1
-                        },
-                        new
-                        {
-                            Id = 30,
-                            FactinId = 1,
-                            Name = "Gladiator I-class Star Destroyer",
-                            Point = 56,
-                            Size = 1
-                        },
-                        new
-                        {
-                            Id = 31,
-                            FactinId = 1,
-                            Name = "Gladiator II-class Star Destroyer",
-                            Point = 62,
-                            Size = 1
-                        },
-                        new
-                        {
-                            Id = 32,
-                            FactinId = 1,
-                            Name = "Quasar Fire I-class Cruiser-Carrier",
-                            Point = 54,
-                            Size = 2
-                        },
-                        new
-                        {
-                            Id = 33,
-                            FactinId = 1,
-                            Name = "Quasar Fire II-class Cruiser-Carrier",
-                            Point = 61,
-                            Size = 2
-                        },
-                        new
-                        {
-                            Id = 34,
-                            FactinId = 1,
-                            Name = "Victory I-class Star Destroyer",
-                            Point = 73,
-                            Size = 2
-                        },
-                        new
-                        {
-                            Id = 35,
-                            FactinId = 1,
-                            Name = "Victory II-class Star Destroyer",
-                            Point = 80,
-                            Size = 2
-                        },
-                        new
-                        {
-                            Id = 36,
-                            FactinId = 1,
-                            Name = "Interdictor Combat Refit",
-                            Point = 93,
-                            Size = 2
-                        },
-                        new
-                        {
-                            Id = 37,
-                            FactinId = 1,
-                            Name = "Interdictor Suppression Refit",
-                            Point = 90,
-                            Size = 2
-                        },
-                        new
-                        {
-                            Id = 38,
-                            FactinId = 1,
-                            Name = "Imperial I-class Star Destroyer",
-                            Point = 110,
-                            Size = 3
-                        },
-                        new
-                        {
-                            Id = 39,
-                            FactinId = 1,
-                            Name = "Imperial II-class Star Destroyer",
-                            Point = 120,
-                            Size = 3
-                        },
-                        new
-                        {
-                            Id = 40,
-                            FactinId = 1,
-                            Name = "Imperial Star Destroyer Cymoon 1 Refit",
-                            Point = 112,
-                            Size = 3
-                        },
-                        new
-                        {
-                            Id = 41,
-                            FactinId = 1,
-                            Name = "Imperial Star Destroyer Kuat Refit",
-                            Point = 112,
-                            Size = 3
-                        },
-                        new
-                        {
-                            Id = 42,
-                            FactinId = 1,
-                            Name = "Onager-class Testbed",
-                            Point = 116,
-                            Size = 3
-                        },
-                        new
-                        {
-                            Id = 43,
-                            FactinId = 1,
-                            Name = "Onager-class Star Destroyer",
-                            Point = 120,
-                            Size = 3
-                        },
-                        new
-                        {
-                            Id = 44,
-                            FactinId = 1,
-                            Name = "Venator II-class Star Destroyer",
-                            Point = 100,
-                            Size = 3
-                        },
-                        new
-                        {
-                            Id = 45,
-                            FactinId = 1,
-                            Name = "Star Dreadnought Command Prototype",
-                            Point = 220,
-                            Size = 4
-                        },
-                        new
-                        {
-                            Id = 46,
-                            FactinId = 1,
-                            Name = "Star Dreadnought Assault Prototype",
-                            Point = 250,
-                            Size = 4
-                        },
-                        new
-                        {
-                            Id = 47,
-                            FactinId = 1,
-                            Name = "Executor I-class Star Dreadnought",
-                            Point = 381,
-                            Size = 4
-                        },
-                        new
-                        {
-                            Id = 48,
-                            FactinId = 1,
-                            Name = "Executor II-class Star Dreadnought",
-                            Point = 411,
-                            Size = 4
-                        },
-                        new
-                        {
-                            Id = 49,
-                            FactinId = 2,
-                            Name = "Consular-class Armed Cruiser",
-                            Point = 37,
-                            Size = 1
-                        },
-                        new
-                        {
-                            Id = 50,
-                            FactinId = 2,
-                            Name = "Consular-class Charger c70",
-                            Point = 42,
-                            Size = 1
-                        },
-                        new
-                        {
-                            Id = 51,
-                            FactinId = 2,
-                            Name = "Pelta-class Medical Frigate",
-                            Point = 49,
-                            Size = 1
-                        },
-                        new
-                        {
-                            Id = 52,
-                            FactinId = 2,
-                            Name = "Pelta-class Transport Frigate",
-                            Point = 45,
-                            Size = 1
-                        },
-                        new
-                        {
-                            Id = 53,
-                            FactinId = 2,
-                            Name = "Acclamator I-class Assault Ship",
-                            Point = 64,
-                            Size = 2
-                        },
-                        new
-                        {
-                            Id = 54,
-                            FactinId = 2,
-                            Name = "Acclamator II-class Assault Ship",
-                            Point = 71,
-                            Size = 2
-                        },
-                        new
-                        {
-                            Id = 55,
-                            FactinId = 2,
-                            Name = "Victory I-class Star Destroyer",
-                            Point = 73,
-                            Size = 2
-                        },
-                        new
-                        {
-                            Id = 56,
-                            FactinId = 2,
-                            Name = "Venator I-class Star Destroyer",
-                            Point = 90,
-                            Size = 3
-                        },
-                        new
-                        {
-                            Id = 57,
-                            FactinId = 2,
-                            Name = "Venator II-class Star Destroyer",
-                            Point = 100,
-                            Size = 3
-                        },
-                        new
-                        {
-                            Id = 58,
-                            FactinId = 3,
-                            Name = "C-ROC Gozanti-class Cruisers",
-                            Point = 24,
-                            Size = 0
-                        },
-                        new
-                        {
-                            Id = 59,
-                            FactinId = 3,
-                            Name = "Hardcell-class Battle Refit",
-                            Point = 50,
-                            Size = 1
-                        },
-                        new
-                        {
-                            Id = 60,
-                            FactinId = 3,
-                            Name = "Hardcell-class Transport",
-                            Point = 47,
-                            Size = 1
-                        },
-                        new
-                        {
-                            Id = 61,
-                            FactinId = 3,
-                            Name = "Munificent-class Comms Frigate",
-                            Point = 70,
-                            Size = 2
-                        },
-                        new
-                        {
-                            Id = 62,
-                            FactinId = 3,
-                            Name = "Munificent-class Star Frigate",
-                            Point = 73,
-                            Size = 2
-                        },
-                        new
-                        {
-                            Id = 63,
-                            FactinId = 3,
-                            Name = "Recusant-class Light Destroyer",
-                            Point = 85,
-                            Size = 3
-                        },
-                        new
-                        {
-                            Id = 64,
-                            FactinId = 3,
-                            Name = "Recusant-class Support Destroyer",
-                            Point = 90,
-                            Size = 3
-                        },
-                        new
-                        {
-                            Id = 65,
-                            FactinId = 3,
-                            Name = "Providence-class Carrier",
-                            Point = 102,
-                            Size = 3
-                        },
-                        new
-                        {
-                            Id = 66,
-                            FactinId = 3,
-                            Name = "Providence-class Dreadnought",
-                            Point = 97,
                             Size = 3
                         });
                 });
@@ -3065,73 +2716,73 @@ namespace ArmadaBackend.Migrations
                         new
                         {
                             Id = 1,
-                            Category = 14,
+                            Category = 0,
                             ShipId = 1
                         },
                         new
                         {
                             Id = 2,
-                            Category = 9,
+                            Category = 14,
                             ShipId = 1
                         },
                         new
                         {
                             Id = 3,
-                            Category = 11,
+                            Category = 9,
                             ShipId = 1
                         },
                         new
                         {
                             Id = 4,
-                            Category = 24,
+                            Category = 11,
                             ShipId = 1
                         },
                         new
                         {
                             Id = 5,
-                            Category = 14,
-                            ShipId = 2
+                            Category = 24,
+                            ShipId = 1
                         },
                         new
                         {
                             Id = 6,
-                            Category = 9,
+                            Category = 0,
                             ShipId = 2
                         },
                         new
                         {
                             Id = 7,
-                            Category = 11,
+                            Category = 14,
                             ShipId = 2
                         },
                         new
                         {
                             Id = 8,
-                            Category = 24,
+                            Category = 9,
                             ShipId = 2
                         },
                         new
                         {
                             Id = 9,
+                            Category = 11,
+                            ShipId = 2
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Category = 24,
+                            ShipId = 2
+                        },
+                        new
+                        {
+                            Id = 11,
                             Category = 0,
                             ShipId = 3
                         },
                         new
                         {
-                            Id = 10,
-                            Category = 14,
-                            ShipId = 3
-                        },
-                        new
-                        {
-                            Id = 11,
-                            Category = 22,
-                            ShipId = 3
-                        },
-                        new
-                        {
                             Id = 12,
-                            Category = 4,
+                            Category = 14,
                             ShipId = 3
                         },
                         new
@@ -3143,37 +2794,37 @@ namespace ArmadaBackend.Migrations
                         new
                         {
                             Id = 14,
-                            Category = 24,
+                            Category = 4,
                             ShipId = 3
                         },
                         new
                         {
                             Id = 15,
+                            Category = 24,
+                            ShipId = 3
+                        },
+                        new
+                        {
+                            Id = 16,
                             Category = 0,
                             ShipId = 4
                         },
                         new
                         {
-                            Id = 16,
+                            Id = 17,
                             Category = 14,
                             ShipId = 4
                         },
                         new
                         {
-                            Id = 17,
-                            Category = 22,
-                            ShipId = 4
-                        },
-                        new
-                        {
                             Id = 18,
-                            Category = 4,
+                            Category = 10,
                             ShipId = 4
                         },
                         new
                         {
                             Id = 19,
-                            Category = 10,
+                            Category = 4,
                             ShipId = 4
                         },
                         new
@@ -3617,19 +3268,19 @@ namespace ArmadaBackend.Migrations
                         new
                         {
                             Id = 93,
-                            Category = 28,
+                            Category = 19,
                             ShipId = 15
                         },
                         new
                         {
                             Id = 94,
-                            Category = 10,
+                            Category = 28,
                             ShipId = 15
                         },
                         new
                         {
                             Id = 95,
-                            Category = 19,
+                            Category = 28,
                             ShipId = 15
                         },
                         new
@@ -3689,31 +3340,31 @@ namespace ArmadaBackend.Migrations
                         new
                         {
                             Id = 105,
-                            Category = 24,
+                            Category = 28,
                             ShipId = 16
                         },
                         new
                         {
                             Id = 106,
+                            Category = 24,
+                            ShipId = 16
+                        },
+                        new
+                        {
+                            Id = 107,
                             Category = 0,
                             ShipId = 17
                         },
                         new
                         {
-                            Id = 107,
+                            Id = 108,
                             Category = 14,
                             ShipId = 17
                         },
                         new
                         {
-                            Id = 108,
-                            Category = 22,
-                            ShipId = 17
-                        },
-                        new
-                        {
                             Id = 109,
-                            Category = 4,
+                            Category = 22,
                             ShipId = 17
                         },
                         new
@@ -3737,31 +3388,31 @@ namespace ArmadaBackend.Migrations
                         new
                         {
                             Id = 113,
-                            Category = 24,
+                            Category = 28,
                             ShipId = 17
                         },
                         new
                         {
                             Id = 114,
+                            Category = 24,
+                            ShipId = 17
+                        },
+                        new
+                        {
+                            Id = 115,
                             Category = 0,
                             ShipId = 18
                         },
                         new
                         {
-                            Id = 115,
+                            Id = 116,
                             Category = 14,
                             ShipId = 18
                         },
                         new
                         {
-                            Id = 116,
-                            Category = 22,
-                            ShipId = 18
-                        },
-                        new
-                        {
                             Id = 117,
-                            Category = 11,
+                            Category = 22,
                             ShipId = 18
                         },
                         new
@@ -3785,25 +3436,25 @@ namespace ArmadaBackend.Migrations
                         new
                         {
                             Id = 121,
-                            Category = 24,
+                            Category = 28,
                             ShipId = 18
                         },
                         new
                         {
                             Id = 122,
+                            Category = 24,
+                            ShipId = 18
+                        },
+                        new
+                        {
+                            Id = 123,
                             Category = 0,
                             ShipId = 19
                         },
                         new
                         {
-                            Id = 123,
-                            Category = 14,
-                            ShipId = 19
-                        },
-                        new
-                        {
                             Id = 124,
-                            Category = 30,
+                            Category = 14,
                             ShipId = 19
                         },
                         new
@@ -3838,20 +3489,14 @@ namespace ArmadaBackend.Migrations
                         },
                         new
                         {
-                            Id = 130,
+                            Id = 131,
                             Category = 0,
                             ShipId = 20
                         },
                         new
                         {
-                            Id = 131,
-                            Category = 14,
-                            ShipId = 20
-                        },
-                        new
-                        {
                             Id = 132,
-                            Category = 30,
+                            Category = 14,
                             ShipId = 20
                         },
                         new
@@ -3886,14 +3531,8 @@ namespace ArmadaBackend.Migrations
                         },
                         new
                         {
-                            Id = 138,
-                            Category = 0,
-                            ShipId = 21
-                        },
-                        new
-                        {
                             Id = 139,
-                            Category = 14,
+                            Category = 0,
                             ShipId = 21
                         },
                         new
@@ -3923,73 +3562,73 @@ namespace ArmadaBackend.Migrations
                         new
                         {
                             Id = 144,
-                            Category = 10,
+                            Category = 4,
                             ShipId = 21
                         },
                         new
                         {
                             Id = 145,
-                            Category = 28,
-                            ShipId = 21
-                        },
-                        new
-                        {
-                            Id = 146,
                             Category = 21,
                             ShipId = 21
                         },
                         new
                         {
+                            Id = 146,
+                            Category = 10,
+                            ShipId = 21
+                        },
+                        new
+                        {
                             Id = 147,
-                            Category = 24,
+                            Category = 28,
                             ShipId = 21
                         },
                         new
                         {
                             Id = 148,
+                            Category = 28,
+                            ShipId = 21
+                        },
+                        new
+                        {
+                            Id = 149,
+                            Category = 24,
+                            ShipId = 21
+                        },
+                        new
+                        {
+                            Id = 150,
                             Category = 0,
                             ShipId = 22
                         },
                         new
                         {
-                            Id = 149,
-                            Category = 14,
-                            ShipId = 22
-                        },
-                        new
-                        {
-                            Id = 150,
-                            Category = 14,
-                            ShipId = 22
-                        },
-                        new
-                        {
                             Id = 151,
-                            Category = 30,
+                            Category = 14,
                             ShipId = 22
                         },
                         new
                         {
                             Id = 152,
-                            Category = 11,
+                            Category = 30,
                             ShipId = 22
                         },
                         new
                         {
                             Id = 153,
-                            Category = 31,
+                            Category = 11,
                             ShipId = 22
                         },
                         new
                         {
                             Id = 154,
-                            Category = 10,
+                            Category = 31,
                             ShipId = 22
                         },
                         new
                         {
                             Id = 155,
-                            Category = 28,
+                            Category = 4,
                             ShipId = 22
                         },
                         new
@@ -4001,2090 +3640,26 @@ namespace ArmadaBackend.Migrations
                         new
                         {
                             Id = 157,
-                            Category = 24,
+                            Category = 10,
                             ShipId = 22
                         },
                         new
                         {
                             Id = 158,
-                            Category = 0,
-                            ShipId = 23
+                            Category = 28,
+                            ShipId = 22
                         },
                         new
                         {
                             Id = 159,
-                            Category = 14,
-                            ShipId = 23
+                            Category = 28,
+                            ShipId = 22
                         },
                         new
                         {
                             Id = 160,
-                            Category = 14,
-                            ShipId = 23
-                        },
-                        new
-                        {
-                            Id = 161,
-                            Category = 30,
-                            ShipId = 23
-                        },
-                        new
-                        {
-                            Id = 162,
-                            Category = 30,
-                            ShipId = 23
-                        },
-                        new
-                        {
-                            Id = 163,
-                            Category = 11,
-                            ShipId = 23
-                        },
-                        new
-                        {
-                            Id = 164,
-                            Category = 11,
-                            ShipId = 23
-                        },
-                        new
-                        {
-                            Id = 165,
-                            Category = 31,
-                            ShipId = 23
-                        },
-                        new
-                        {
-                            Id = 166,
-                            Category = 31,
-                            ShipId = 23
-                        },
-                        new
-                        {
-                            Id = 167,
-                            Category = 22,
-                            ShipId = 23
-                        },
-                        new
-                        {
-                            Id = 168,
-                            Category = 22,
-                            ShipId = 23
-                        },
-                        new
-                        {
-                            Id = 169,
                             Category = 24,
-                            ShipId = 23
-                        },
-                        new
-                        {
-                            Id = 170,
-                            Category = 14,
-                            ShipId = 24
-                        },
-                        new
-                        {
-                            Id = 171,
-                            Category = 9,
-                            ShipId = 24
-                        },
-                        new
-                        {
-                            Id = 172,
-                            Category = 11,
-                            ShipId = 24
-                        },
-                        new
-                        {
-                            Id = 173,
-                            Category = 25,
-                            ShipId = 24
-                        },
-                        new
-                        {
-                            Id = 174,
-                            Category = 14,
-                            ShipId = 25
-                        },
-                        new
-                        {
-                            Id = 175,
-                            Category = 9,
-                            ShipId = 25
-                        },
-                        new
-                        {
-                            Id = 176,
-                            Category = 11,
-                            ShipId = 25
-                        },
-                        new
-                        {
-                            Id = 177,
-                            Category = 25,
-                            ShipId = 25
-                        },
-                        new
-                        {
-                            Id = 178,
-                            Category = 1,
-                            ShipId = 26
-                        },
-                        new
-                        {
-                            Id = 179,
-                            Category = 14,
-                            ShipId = 26
-                        },
-                        new
-                        {
-                            Id = 180,
-                            Category = 30,
-                            ShipId = 26
-                        },
-                        new
-                        {
-                            Id = 181,
-                            Category = 11,
-                            ShipId = 26
-                        },
-                        new
-                        {
-                            Id = 182,
-                            Category = 31,
-                            ShipId = 26
-                        },
-                        new
-                        {
-                            Id = 183,
-                            Category = 19,
-                            ShipId = 26
-                        },
-                        new
-                        {
-                            Id = 184,
-                            Category = 25,
-                            ShipId = 26
-                        },
-                        new
-                        {
-                            Id = 185,
-                            Category = 1,
-                            ShipId = 27
-                        },
-                        new
-                        {
-                            Id = 186,
-                            Category = 14,
-                            ShipId = 27
-                        },
-                        new
-                        {
-                            Id = 187,
-                            Category = 30,
-                            ShipId = 27
-                        },
-                        new
-                        {
-                            Id = 188,
-                            Category = 11,
-                            ShipId = 27
-                        },
-                        new
-                        {
-                            Id = 189,
-                            Category = 31,
-                            ShipId = 27
-                        },
-                        new
-                        {
-                            Id = 190,
-                            Category = 10,
-                            ShipId = 27
-                        },
-                        new
-                        {
-                            Id = 191,
-                            Category = 25,
-                            ShipId = 27
-                        },
-                        new
-                        {
-                            Id = 192,
-                            Category = 1,
-                            ShipId = 28
-                        },
-                        new
-                        {
-                            Id = 193,
-                            Category = 14,
-                            ShipId = 28
-                        },
-                        new
-                        {
-                            Id = 194,
-                            Category = 4,
-                            ShipId = 28
-                        },
-                        new
-                        {
-                            Id = 195,
-                            Category = 28,
-                            ShipId = 28
-                        },
-                        new
-                        {
-                            Id = 196,
-                            Category = 25,
-                            ShipId = 28
-                        },
-                        new
-                        {
-                            Id = 197,
-                            Category = 1,
-                            ShipId = 29
-                        },
-                        new
-                        {
-                            Id = 198,
-                            Category = 14,
-                            ShipId = 29
-                        },
-                        new
-                        {
-                            Id = 199,
-                            Category = 22,
-                            ShipId = 29
-                        },
-                        new
-                        {
-                            Id = 200,
-                            Category = 4,
-                            ShipId = 29
-                        },
-                        new
-                        {
-                            Id = 201,
-                            Category = 28,
-                            ShipId = 29
-                        },
-                        new
-                        {
-                            Id = 202,
-                            Category = 25,
-                            ShipId = 29
-                        },
-                        new
-                        {
-                            Id = 203,
-                            Category = 1,
-                            ShipId = 30
-                        },
-                        new
-                        {
-                            Id = 204,
-                            Category = 14,
-                            ShipId = 30
-                        },
-                        new
-                        {
-                            Id = 205,
-                            Category = 30,
-                            ShipId = 30
-                        },
-                        new
-                        {
-                            Id = 206,
-                            Category = 22,
-                            ShipId = 30
-                        },
-                        new
-                        {
-                            Id = 207,
-                            Category = 19,
-                            ShipId = 30
-                        },
-                        new
-                        {
-                            Id = 208,
-                            Category = 25,
-                            ShipId = 30
-                        },
-                        new
-                        {
-                            Id = 209,
-                            Category = 1,
-                            ShipId = 31
-                        },
-                        new
-                        {
-                            Id = 210,
-                            Category = 14,
-                            ShipId = 31
-                        },
-                        new
-                        {
-                            Id = 211,
-                            Category = 30,
-                            ShipId = 31
-                        },
-                        new
-                        {
-                            Id = 212,
-                            Category = 22,
-                            ShipId = 31
-                        },
-                        new
-                        {
-                            Id = 213,
-                            Category = 19,
-                            ShipId = 31
-                        },
-                        new
-                        {
-                            Id = 214,
-                            Category = 25,
-                            ShipId = 31
-                        },
-                        new
-                        {
-                            Id = 215,
-                            Category = 1,
-                            ShipId = 32
-                        },
-                        new
-                        {
-                            Id = 216,
-                            Category = 14,
-                            ShipId = 32
-                        },
-                        new
-                        {
-                            Id = 217,
-                            Category = 30,
-                            ShipId = 32
-                        },
-                        new
-                        {
-                            Id = 218,
-                            Category = 11,
-                            ShipId = 32
-                        },
-                        new
-                        {
-                            Id = 219,
-                            Category = 11,
-                            ShipId = 32
-                        },
-                        new
-                        {
-                            Id = 220,
-                            Category = 31,
-                            ShipId = 32
-                        },
-                        new
-                        {
-                            Id = 221,
-                            Category = 25,
-                            ShipId = 32
-                        },
-                        new
-                        {
-                            Id = 222,
-                            Category = 1,
-                            ShipId = 33
-                        },
-                        new
-                        {
-                            Id = 223,
-                            Category = 14,
-                            ShipId = 33
-                        },
-                        new
-                        {
-                            Id = 224,
-                            Category = 30,
-                            ShipId = 33
-                        },
-                        new
-                        {
-                            Id = 225,
-                            Category = 30,
-                            ShipId = 33
-                        },
-                        new
-                        {
-                            Id = 226,
-                            Category = 11,
-                            ShipId = 33
-                        },
-                        new
-                        {
-                            Id = 227,
-                            Category = 31,
-                            ShipId = 33
-                        },
-                        new
-                        {
-                            Id = 228,
-                            Category = 25,
-                            ShipId = 33
-                        },
-                        new
-                        {
-                            Id = 229,
-                            Category = 1,
-                            ShipId = 34
-                        },
-                        new
-                        {
-                            Id = 230,
-                            Category = 14,
-                            ShipId = 34
-                        },
-                        new
-                        {
-                            Id = 231,
-                            Category = 30,
-                            ShipId = 34
-                        },
-                        new
-                        {
-                            Id = 232,
-                            Category = 11,
-                            ShipId = 34
-                        },
-                        new
-                        {
-                            Id = 233,
-                            Category = 31,
-                            ShipId = 34
-                        },
-                        new
-                        {
-                            Id = 234,
-                            Category = 28,
-                            ShipId = 34
-                        },
-                        new
-                        {
-                            Id = 235,
-                            Category = 19,
-                            ShipId = 34
-                        },
-                        new
-                        {
-                            Id = 236,
-                            Category = 25,
-                            ShipId = 34
-                        },
-                        new
-                        {
-                            Id = 237,
-                            Category = 1,
-                            ShipId = 35
-                        },
-                        new
-                        {
-                            Id = 238,
-                            Category = 14,
-                            ShipId = 35
-                        },
-                        new
-                        {
-                            Id = 239,
-                            Category = 30,
-                            ShipId = 35
-                        },
-                        new
-                        {
-                            Id = 240,
-                            Category = 11,
-                            ShipId = 35
-                        },
-                        new
-                        {
-                            Id = 241,
-                            Category = 31,
-                            ShipId = 35
-                        },
-                        new
-                        {
-                            Id = 242,
-                            Category = 28,
-                            ShipId = 35
-                        },
-                        new
-                        {
-                            Id = 243,
-                            Category = 10,
-                            ShipId = 35
-                        },
-                        new
-                        {
-                            Id = 244,
-                            Category = 25,
-                            ShipId = 35
-                        },
-                        new
-                        {
-                            Id = 245,
-                            Category = 1,
-                            ShipId = 36
-                        },
-                        new
-                        {
-                            Id = 246,
-                            Category = 14,
-                            ShipId = 36
-                        },
-                        new
-                        {
-                            Id = 247,
-                            Category = 22,
-                            ShipId = 36
-                        },
-                        new
-                        {
-                            Id = 248,
-                            Category = 11,
-                            ShipId = 36
-                        },
-                        new
-                        {
-                            Id = 249,
-                            Category = 6,
-                            ShipId = 36
-                        },
-                        new
-                        {
-                            Id = 250,
-                            Category = 10,
-                            ShipId = 36
-                        },
-                        new
-                        {
-                            Id = 251,
-                            Category = 25,
-                            ShipId = 36
-                        },
-                        new
-                        {
-                            Id = 252,
-                            Category = 1,
-                            ShipId = 37
-                        },
-                        new
-                        {
-                            Id = 253,
-                            Category = 14,
-                            ShipId = 37
-                        },
-                        new
-                        {
-                            Id = 254,
-                            Category = 22,
-                            ShipId = 37
-                        },
-                        new
-                        {
-                            Id = 255,
-                            Category = 11,
-                            ShipId = 37
-                        },
-                        new
-                        {
-                            Id = 256,
-                            Category = 6,
-                            ShipId = 37
-                        },
-                        new
-                        {
-                            Id = 257,
-                            Category = 6,
-                            ShipId = 37
-                        },
-                        new
-                        {
-                            Id = 258,
-                            Category = 10,
-                            ShipId = 37
-                        },
-                        new
-                        {
-                            Id = 259,
-                            Category = 25,
-                            ShipId = 37
-                        },
-                        new
-                        {
-                            Id = 260,
-                            Category = 1,
-                            ShipId = 38
-                        },
-                        new
-                        {
-                            Id = 261,
-                            Category = 14,
-                            ShipId = 38
-                        },
-                        new
-                        {
-                            Id = 262,
-                            Category = 30,
-                            ShipId = 38
-                        },
-                        new
-                        {
-                            Id = 263,
-                            Category = 11,
-                            ShipId = 38
-                        },
-                        new
-                        {
-                            Id = 264,
-                            Category = 11,
-                            ShipId = 38
-                        },
-                        new
-                        {
-                            Id = 265,
-                            Category = 31,
-                            ShipId = 38
-                        },
-                        new
-                        {
-                            Id = 266,
-                            Category = 10,
-                            ShipId = 38
-                        },
-                        new
-                        {
-                            Id = 267,
-                            Category = 28,
-                            ShipId = 38
-                        },
-                        new
-                        {
-                            Id = 268,
-                            Category = 25,
-                            ShipId = 38
-                        },
-                        new
-                        {
-                            Id = 269,
-                            Category = 1,
-                            ShipId = 39
-                        },
-                        new
-                        {
-                            Id = 270,
-                            Category = 14,
-                            ShipId = 39
-                        },
-                        new
-                        {
-                            Id = 271,
-                            Category = 30,
-                            ShipId = 39
-                        },
-                        new
-                        {
-                            Id = 272,
-                            Category = 11,
-                            ShipId = 39
-                        },
-                        new
-                        {
-                            Id = 273,
-                            Category = 31,
-                            ShipId = 39
-                        },
-                        new
-                        {
-                            Id = 274,
-                            Category = 4,
-                            ShipId = 39
-                        },
-                        new
-                        {
-                            Id = 275,
-                            Category = 10,
-                            ShipId = 39
-                        },
-                        new
-                        {
-                            Id = 276,
-                            Category = 28,
-                            ShipId = 39
-                        },
-                        new
-                        {
-                            Id = 277,
-                            Category = 25,
-                            ShipId = 39
-                        },
-                        new
-                        {
-                            Id = 278,
-                            Category = 1,
-                            ShipId = 40
-                        },
-                        new
-                        {
-                            Id = 279,
-                            Category = 14,
-                            ShipId = 40
-                        },
-                        new
-                        {
-                            Id = 280,
-                            Category = 30,
-                            ShipId = 40
-                        },
-                        new
-                        {
-                            Id = 281,
-                            Category = 7,
-                            ShipId = 40
-                        },
-                        new
-                        {
-                            Id = 282,
-                            Category = 11,
-                            ShipId = 40
-                        },
-                        new
-                        {
-                            Id = 283,
-                            Category = 31,
-                            ShipId = 40
-                        },
-                        new
-                        {
-                            Id = 284,
-                            Category = 28,
-                            ShipId = 40
-                        },
-                        new
-                        {
-                            Id = 285,
-                            Category = 28,
-                            ShipId = 40
-                        },
-                        new
-                        {
-                            Id = 286,
-                            Category = 25,
-                            ShipId = 40
-                        },
-                        new
-                        {
-                            Id = 287,
-                            Category = 1,
-                            ShipId = 41
-                        },
-                        new
-                        {
-                            Id = 288,
-                            Category = 14,
-                            ShipId = 41
-                        },
-                        new
-                        {
-                            Id = 289,
-                            Category = 30,
-                            ShipId = 41
-                        },
-                        new
-                        {
-                            Id = 290,
-                            Category = 11,
-                            ShipId = 41
-                        },
-                        new
-                        {
-                            Id = 291,
-                            Category = 31,
-                            ShipId = 41
-                        },
-                        new
-                        {
-                            Id = 292,
-                            Category = 4,
-                            ShipId = 41
-                        },
-                        new
-                        {
-                            Id = 293,
-                            Category = 10,
-                            ShipId = 41
-                        },
-                        new
-                        {
-                            Id = 294,
-                            Category = 19,
-                            ShipId = 41
-                        },
-                        new
-                        {
-                            Id = 295,
-                            Category = 25,
-                            ShipId = 41
-                        },
-                        new
-                        {
-                            Id = 296,
-                            Category = 1,
-                            ShipId = 42
-                        },
-                        new
-                        {
-                            Id = 297,
-                            Category = 14,
-                            ShipId = 42
-                        },
-                        new
-                        {
-                            Id = 298,
-                            Category = 30,
-                            ShipId = 42
-                        },
-                        new
-                        {
-                            Id = 299,
-                            Category = 30,
-                            ShipId = 42
-                        },
-                        new
-                        {
-                            Id = 300,
-                            Category = 22,
-                            ShipId = 42
-                        },
-                        new
-                        {
-                            Id = 301,
-                            Category = 20,
-                            ShipId = 42
-                        },
-                        new
-                        {
-                            Id = 302,
-                            Category = 25,
-                            ShipId = 42
-                        },
-                        new
-                        {
-                            Id = 303,
-                            Category = 1,
-                            ShipId = 43
-                        },
-                        new
-                        {
-                            Id = 304,
-                            Category = 14,
-                            ShipId = 43
-                        },
-                        new
-                        {
-                            Id = 305,
-                            Category = 30,
-                            ShipId = 43
-                        },
-                        new
-                        {
-                            Id = 306,
-                            Category = 30,
-                            ShipId = 43
-                        },
-                        new
-                        {
-                            Id = 307,
-                            Category = 28,
-                            ShipId = 43
-                        },
-                        new
-                        {
-                            Id = 308,
-                            Category = 20,
-                            ShipId = 43
-                        },
-                        new
-                        {
-                            Id = 309,
-                            Category = 25,
-                            ShipId = 43
-                        },
-                        new
-                        {
-                            Id = 310,
-                            Category = 1,
-                            ShipId = 44
-                        },
-                        new
-                        {
-                            Id = 311,
-                            Category = 14,
-                            ShipId = 44
-                        },
-                        new
-                        {
-                            Id = 312,
-                            Category = 30,
-                            ShipId = 44
-                        },
-                        new
-                        {
-                            Id = 313,
-                            Category = 4,
-                            ShipId = 44
-                        },
-                        new
-                        {
-                            Id = 314,
-                            Category = 28,
-                            ShipId = 44
-                        },
-                        new
-                        {
-                            Id = 315,
-                            Category = 19,
-                            ShipId = 44
-                        },
-                        new
-                        {
-                            Id = 316,
-                            Category = 19,
-                            ShipId = 44
-                        },
-                        new
-                        {
-                            Id = 317,
-                            Category = 25,
-                            ShipId = 44
-                        },
-                        new
-                        {
-                            Id = 318,
-                            Category = 1,
-                            ShipId = 45
-                        },
-                        new
-                        {
-                            Id = 319,
-                            Category = 14,
-                            ShipId = 45
-                        },
-                        new
-                        {
-                            Id = 320,
-                            Category = 14,
-                            ShipId = 45
-                        },
-                        new
-                        {
-                            Id = 321,
-                            Category = 14,
-                            ShipId = 45
-                        },
-                        new
-                        {
-                            Id = 322,
-                            Category = 30,
-                            ShipId = 45
-                        },
-                        new
-                        {
-                            Id = 323,
-                            Category = 7,
-                            ShipId = 45
-                        },
-                        new
-                        {
-                            Id = 324,
-                            Category = 7,
-                            ShipId = 45
-                        },
-                        new
-                        {
-                            Id = 325,
-                            Category = 11,
-                            ShipId = 45
-                        },
-                        new
-                        {
-                            Id = 326,
-                            Category = 31,
-                            ShipId = 45
-                        },
-                        new
-                        {
-                            Id = 327,
-                            Category = 10,
-                            ShipId = 45
-                        },
-                        new
-                        {
-                            Id = 328,
-                            Category = 28,
-                            ShipId = 45
-                        },
-                        new
-                        {
-                            Id = 329,
-                            Category = 25,
-                            ShipId = 45
-                        },
-                        new
-                        {
-                            Id = 330,
-                            Category = 1,
-                            ShipId = 46
-                        },
-                        new
-                        {
-                            Id = 331,
-                            Category = 14,
-                            ShipId = 46
-                        },
-                        new
-                        {
-                            Id = 332,
-                            Category = 14,
-                            ShipId = 46
-                        },
-                        new
-                        {
-                            Id = 333,
-                            Category = 14,
-                            ShipId = 46
-                        },
-                        new
-                        {
-                            Id = 334,
-                            Category = 30,
-                            ShipId = 46
-                        },
-                        new
-                        {
-                            Id = 335,
-                            Category = 11,
-                            ShipId = 46
-                        },
-                        new
-                        {
-                            Id = 336,
-                            Category = 11,
-                            ShipId = 46
-                        },
-                        new
-                        {
-                            Id = 337,
-                            Category = 31,
-                            ShipId = 46
-                        },
-                        new
-                        {
-                            Id = 338,
-                            Category = 10,
-                            ShipId = 46
-                        },
-                        new
-                        {
-                            Id = 339,
-                            Category = 10,
-                            ShipId = 46
-                        },
-                        new
-                        {
-                            Id = 340,
-                            Category = 28,
-                            ShipId = 46
-                        },
-                        new
-                        {
-                            Id = 341,
-                            Category = 28,
-                            ShipId = 46
-                        },
-                        new
-                        {
-                            Id = 342,
-                            Category = 25,
-                            ShipId = 46
-                        },
-                        new
-                        {
-                            Id = 343,
-                            Category = 1,
-                            ShipId = 47
-                        },
-                        new
-                        {
-                            Id = 344,
-                            Category = 14,
-                            ShipId = 47
-                        },
-                        new
-                        {
-                            Id = 345,
-                            Category = 14,
-                            ShipId = 47
-                        },
-                        new
-                        {
-                            Id = 346,
-                            Category = 14,
-                            ShipId = 47
-                        },
-                        new
-                        {
-                            Id = 347,
-                            Category = 14,
-                            ShipId = 47
-                        },
-                        new
-                        {
-                            Id = 348,
-                            Category = 30,
-                            ShipId = 47
-                        },
-                        new
-                        {
-                            Id = 349,
-                            Category = 7,
-                            ShipId = 47
-                        },
-                        new
-                        {
-                            Id = 350,
-                            Category = 7,
-                            ShipId = 47
-                        },
-                        new
-                        {
-                            Id = 351,
-                            Category = 7,
-                            ShipId = 47
-                        },
-                        new
-                        {
-                            Id = 352,
-                            Category = 7,
-                            ShipId = 47
-                        },
-                        new
-                        {
-                            Id = 353,
-                            Category = 11,
-                            ShipId = 47
-                        },
-                        new
-                        {
-                            Id = 354,
-                            Category = 31,
-                            ShipId = 47
-                        },
-                        new
-                        {
-                            Id = 355,
-                            Category = 28,
-                            ShipId = 47
-                        },
-                        new
-                        {
-                            Id = 356,
-                            Category = 10,
-                            ShipId = 47
-                        },
-                        new
-                        {
-                            Id = 357,
-                            Category = 25,
-                            ShipId = 47
-                        },
-                        new
-                        {
-                            Id = 358,
-                            Category = 1,
-                            ShipId = 48
-                        },
-                        new
-                        {
-                            Id = 359,
-                            Category = 14,
-                            ShipId = 48
-                        },
-                        new
-                        {
-                            Id = 360,
-                            Category = 14,
-                            ShipId = 48
-                        },
-                        new
-                        {
-                            Id = 361,
-                            Category = 14,
-                            ShipId = 48
-                        },
-                        new
-                        {
-                            Id = 362,
-                            Category = 14,
-                            ShipId = 48
-                        },
-                        new
-                        {
-                            Id = 363,
-                            Category = 30,
-                            ShipId = 48
-                        },
-                        new
-                        {
-                            Id = 364,
-                            Category = 7,
-                            ShipId = 48
-                        },
-                        new
-                        {
-                            Id = 365,
-                            Category = 11,
-                            ShipId = 48
-                        },
-                        new
-                        {
-                            Id = 366,
-                            Category = 11,
-                            ShipId = 48
-                        },
-                        new
-                        {
-                            Id = 367,
-                            Category = 31,
-                            ShipId = 48
-                        },
-                        new
-                        {
-                            Id = 368,
-                            Category = 10,
-                            ShipId = 48
-                        },
-                        new
-                        {
-                            Id = 369,
-                            Category = 10,
-                            ShipId = 48
-                        },
-                        new
-                        {
-                            Id = 370,
-                            Category = 28,
-                            ShipId = 48
-                        },
-                        new
-                        {
-                            Id = 371,
-                            Category = 28,
-                            ShipId = 48
-                        },
-                        new
-                        {
-                            Id = 372,
-                            Category = 25,
-                            ShipId = 48
-                        },
-                        new
-                        {
-                            Id = 373,
-                            Category = 2,
-                            ShipId = 49
-                        },
-                        new
-                        {
-                            Id = 374,
-                            Category = 14,
-                            ShipId = 49
-                        },
-                        new
-                        {
-                            Id = 375,
-                            Category = 22,
-                            ShipId = 49
-                        },
-                        new
-                        {
-                            Id = 376,
-                            Category = 5,
-                            ShipId = 49
-                        },
-                        new
-                        {
-                            Id = 377,
-                            Category = 19,
-                            ShipId = 49
-                        },
-                        new
-                        {
-                            Id = 378,
-                            Category = 26,
-                            ShipId = 49
-                        },
-                        new
-                        {
-                            Id = 379,
-                            Category = 2,
-                            ShipId = 50
-                        },
-                        new
-                        {
-                            Id = 380,
-                            Category = 14,
-                            ShipId = 50
-                        },
-                        new
-                        {
-                            Id = 381,
-                            Category = 22,
-                            ShipId = 50
-                        },
-                        new
-                        {
-                            Id = 382,
-                            Category = 12,
-                            ShipId = 50
-                        },
-                        new
-                        {
-                            Id = 383,
-                            Category = 29,
-                            ShipId = 50
-                        },
-                        new
-                        {
-                            Id = 384,
-                            Category = 26,
-                            ShipId = 50
-                        },
-                        new
-                        {
-                            Id = 385,
-                            Category = 2,
-                            ShipId = 51
-                        },
-                        new
-                        {
-                            Id = 386,
-                            Category = 14,
-                            ShipId = 51
-                        },
-                        new
-                        {
-                            Id = 387,
-                            Category = 22,
-                            ShipId = 51
-                        },
-                        new
-                        {
-                            Id = 388,
-                            Category = 9,
-                            ShipId = 51
-                        },
-                        new
-                        {
-                            Id = 389,
-                            Category = 12,
-                            ShipId = 51
-                        },
-                        new
-                        {
-                            Id = 390,
-                            Category = 26,
-                            ShipId = 51
-                        },
-                        new
-                        {
-                            Id = 391,
-                            Category = 2,
-                            ShipId = 52
-                        },
-                        new
-                        {
-                            Id = 392,
-                            Category = 14,
-                            ShipId = 52
-                        },
-                        new
-                        {
-                            Id = 393,
-                            Category = 22,
-                            ShipId = 52
-                        },
-                        new
-                        {
-                            Id = 394,
-                            Category = 9,
-                            ShipId = 52
-                        },
-                        new
-                        {
-                            Id = 395,
-                            Category = 5,
-                            ShipId = 52
-                        },
-                        new
-                        {
-                            Id = 396,
-                            Category = 26,
-                            ShipId = 52
-                        },
-                        new
-                        {
-                            Id = 397,
-                            Category = 2,
-                            ShipId = 53
-                        },
-                        new
-                        {
-                            Id = 398,
-                            Category = 14,
-                            ShipId = 53
-                        },
-                        new
-                        {
-                            Id = 399,
-                            Category = 30,
-                            ShipId = 53
-                        },
-                        new
-                        {
-                            Id = 400,
-                            Category = 12,
-                            ShipId = 53
-                        },
-                        new
-                        {
-                            Id = 401,
-                            Category = 12,
-                            ShipId = 53
-                        },
-                        new
-                        {
-                            Id = 402,
-                            Category = 31,
-                            ShipId = 53
-                        },
-                        new
-                        {
-                            Id = 403,
-                            Category = 29,
-                            ShipId = 53
-                        },
-                        new
-                        {
-                            Id = 404,
-                            Category = 19,
-                            ShipId = 53
-                        },
-                        new
-                        {
-                            Id = 405,
-                            Category = 26,
-                            ShipId = 53
-                        },
-                        new
-                        {
-                            Id = 406,
-                            Category = 2,
-                            ShipId = 54
-                        },
-                        new
-                        {
-                            Id = 407,
-                            Category = 14,
-                            ShipId = 54
-                        },
-                        new
-                        {
-                            Id = 408,
-                            Category = 30,
-                            ShipId = 54
-                        },
-                        new
-                        {
-                            Id = 409,
-                            Category = 5,
-                            ShipId = 54
-                        },
-                        new
-                        {
-                            Id = 410,
-                            Category = 29,
-                            ShipId = 54
-                        },
-                        new
-                        {
-                            Id = 411,
-                            Category = 19,
-                            ShipId = 54
-                        },
-                        new
-                        {
-                            Id = 412,
-                            Category = 26,
-                            ShipId = 54
-                        },
-                        new
-                        {
-                            Id = 413,
-                            Category = 2,
-                            ShipId = 55
-                        },
-                        new
-                        {
-                            Id = 414,
-                            Category = 14,
-                            ShipId = 55
-                        },
-                        new
-                        {
-                            Id = 415,
-                            Category = 30,
-                            ShipId = 55
-                        },
-                        new
-                        {
-                            Id = 416,
-                            Category = 22,
-                            ShipId = 55
-                        },
-                        new
-                        {
-                            Id = 417,
-                            Category = 12,
-                            ShipId = 55
-                        },
-                        new
-                        {
-                            Id = 418,
-                            Category = 31,
-                            ShipId = 55
-                        },
-                        new
-                        {
-                            Id = 419,
-                            Category = 19,
-                            ShipId = 55
-                        },
-                        new
-                        {
-                            Id = 420,
-                            Category = 19,
-                            ShipId = 55
-                        },
-                        new
-                        {
-                            Id = 421,
-                            Category = 26,
-                            ShipId = 55
-                        },
-                        new
-                        {
-                            Id = 422,
-                            Category = 2,
-                            ShipId = 56
-                        },
-                        new
-                        {
-                            Id = 423,
-                            Category = 14,
-                            ShipId = 56
-                        },
-                        new
-                        {
-                            Id = 424,
-                            Category = 30,
-                            ShipId = 56
-                        },
-                        new
-                        {
-                            Id = 425,
-                            Category = 8,
-                            ShipId = 56
-                        },
-                        new
-                        {
-                            Id = 426,
-                            Category = 12,
-                            ShipId = 56
-                        },
-                        new
-                        {
-                            Id = 427,
-                            Category = 31,
-                            ShipId = 56
-                        },
-                        new
-                        {
-                            Id = 428,
-                            Category = 29,
-                            ShipId = 56
-                        },
-                        new
-                        {
-                            Id = 429,
-                            Category = 19,
-                            ShipId = 56
-                        },
-                        new
-                        {
-                            Id = 430,
-                            Category = 26,
-                            ShipId = 56
-                        },
-                        new
-                        {
-                            Id = 431,
-                            Category = 2,
-                            ShipId = 57
-                        },
-                        new
-                        {
-                            Id = 432,
-                            Category = 14,
-                            ShipId = 57
-                        },
-                        new
-                        {
-                            Id = 433,
-                            Category = 30,
-                            ShipId = 57
-                        },
-                        new
-                        {
-                            Id = 434,
-                            Category = 12,
-                            ShipId = 57
-                        },
-                        new
-                        {
-                            Id = 435,
-                            Category = 31,
-                            ShipId = 57
-                        },
-                        new
-                        {
-                            Id = 436,
-                            Category = 5,
-                            ShipId = 57
-                        },
-                        new
-                        {
-                            Id = 437,
-                            Category = 29,
-                            ShipId = 57
-                        },
-                        new
-                        {
-                            Id = 438,
-                            Category = 19,
-                            ShipId = 57
-                        },
-                        new
-                        {
-                            Id = 439,
-                            Category = 26,
-                            ShipId = 57
-                        },
-                        new
-                        {
-                            Id = 440,
-                            Category = 14,
-                            ShipId = 58
-                        },
-                        new
-                        {
-                            Id = 441,
-                            Category = 30,
-                            ShipId = 58
-                        },
-                        new
-                        {
-                            Id = 442,
-                            Category = 10,
-                            ShipId = 58
-                        },
-                        new
-                        {
-                            Id = 443,
-                            Category = 27,
-                            ShipId = 58
-                        },
-                        new
-                        {
-                            Id = 444,
-                            Category = 3,
-                            ShipId = 59
-                        },
-                        new
-                        {
-                            Id = 445,
-                            Category = 14,
-                            ShipId = 59
-                        },
-                        new
-                        {
-                            Id = 446,
-                            Category = 13,
-                            ShipId = 59
-                        },
-                        new
-                        {
-                            Id = 447,
-                            Category = 5,
-                            ShipId = 59
-                        },
-                        new
-                        {
-                            Id = 448,
-                            Category = 29,
-                            ShipId = 59
-                        },
-                        new
-                        {
-                            Id = 449,
-                            Category = 27,
-                            ShipId = 59
-                        },
-                        new
-                        {
-                            Id = 450,
-                            Category = 3,
-                            ShipId = 60
-                        },
-                        new
-                        {
-                            Id = 451,
-                            Category = 14,
-                            ShipId = 60
-                        },
-                        new
-                        {
-                            Id = 452,
-                            Category = 14,
-                            ShipId = 60
-                        },
-                        new
-                        {
-                            Id = 453,
-                            Category = 23,
-                            ShipId = 60
-                        },
-                        new
-                        {
-                            Id = 454,
-                            Category = 9,
-                            ShipId = 60
-                        },
-                        new
-                        {
-                            Id = 455,
-                            Category = 27,
-                            ShipId = 60
-                        },
-                        new
-                        {
-                            Id = 456,
-                            Category = 3,
-                            ShipId = 61
-                        },
-                        new
-                        {
-                            Id = 457,
-                            Category = 14,
-                            ShipId = 61
-                        },
-                        new
-                        {
-                            Id = 458,
-                            Category = 23,
-                            ShipId = 61
-                        },
-                        new
-                        {
-                            Id = 459,
-                            Category = 13,
-                            ShipId = 61
-                        },
-                        new
-                        {
-                            Id = 460,
-                            Category = 29,
-                            ShipId = 61
-                        },
-                        new
-                        {
-                            Id = 461,
-                            Category = 10,
-                            ShipId = 61
-                        },
-                        new
-                        {
-                            Id = 462,
-                            Category = 27,
-                            ShipId = 61
-                        },
-                        new
-                        {
-                            Id = 463,
-                            Category = 3,
-                            ShipId = 62
-                        },
-                        new
-                        {
-                            Id = 464,
-                            Category = 14,
-                            ShipId = 62
-                        },
-                        new
-                        {
-                            Id = 465,
-                            Category = 23,
-                            ShipId = 62
-                        },
-                        new
-                        {
-                            Id = 466,
-                            Category = 5,
-                            ShipId = 62
-                        },
-                        new
-                        {
-                            Id = 467,
-                            Category = 29,
-                            ShipId = 62
-                        },
-                        new
-                        {
-                            Id = 468,
-                            Category = 10,
-                            ShipId = 62
-                        },
-                        new
-                        {
-                            Id = 469,
-                            Category = 27,
-                            ShipId = 62
-                        },
-                        new
-                        {
-                            Id = 470,
-                            Category = 3,
-                            ShipId = 63
-                        },
-                        new
-                        {
-                            Id = 471,
-                            Category = 14,
-                            ShipId = 63
-                        },
-                        new
-                        {
-                            Id = 472,
-                            Category = 30,
-                            ShipId = 63
-                        },
-                        new
-                        {
-                            Id = 473,
-                            Category = 13,
-                            ShipId = 63
-                        },
-                        new
-                        {
-                            Id = 474,
-                            Category = 31,
-                            ShipId = 63
-                        },
-                        new
-                        {
-                            Id = 475,
-                            Category = 19,
-                            ShipId = 63
-                        },
-                        new
-                        {
-                            Id = 476,
-                            Category = 29,
-                            ShipId = 63
-                        },
-                        new
-                        {
-                            Id = 477,
-                            Category = 27,
-                            ShipId = 63
-                        },
-                        new
-                        {
-                            Id = 478,
-                            Category = 3,
-                            ShipId = 64
-                        },
-                        new
-                        {
-                            Id = 479,
-                            Category = 14,
-                            ShipId = 64
-                        },
-                        new
-                        {
-                            Id = 480,
-                            Category = 30,
-                            ShipId = 64
-                        },
-                        new
-                        {
-                            Id = 481,
-                            Category = 13,
-                            ShipId = 64
-                        },
-                        new
-                        {
-                            Id = 482,
-                            Category = 13,
-                            ShipId = 64
-                        },
-                        new
-                        {
-                            Id = 483,
-                            Category = 31,
-                            ShipId = 64
-                        },
-                        new
-                        {
-                            Id = 484,
-                            Category = 29,
-                            ShipId = 64
-                        },
-                        new
-                        {
-                            Id = 485,
-                            Category = 27,
-                            ShipId = 64
-                        },
-                        new
-                        {
-                            Id = 486,
-                            Category = 3,
-                            ShipId = 65
-                        },
-                        new
-                        {
-                            Id = 487,
-                            Category = 14,
-                            ShipId = 65
-                        },
-                        new
-                        {
-                            Id = 488,
-                            Category = 5,
-                            ShipId = 65
-                        },
-                        new
-                        {
-                            Id = 489,
-                            Category = 8,
-                            ShipId = 65
-                        },
-                        new
-                        {
-                            Id = 490,
-                            Category = 13,
-                            ShipId = 65
-                        },
-                        new
-                        {
-                            Id = 491,
-                            Category = 19,
-                            ShipId = 65
-                        },
-                        new
-                        {
-                            Id = 492,
-                            Category = 10,
-                            ShipId = 65
-                        },
-                        new
-                        {
-                            Id = 493,
-                            Category = 29,
-                            ShipId = 65
-                        },
-                        new
-                        {
-                            Id = 494,
-                            Category = 27,
-                            ShipId = 65
-                        },
-                        new
-                        {
-                            Id = 495,
-                            Category = 3,
-                            ShipId = 66
-                        },
-                        new
-                        {
-                            Id = 496,
-                            Category = 14,
-                            ShipId = 66
-                        },
-                        new
-                        {
-                            Id = 497,
-                            Category = 30,
-                            ShipId = 66
-                        },
-                        new
-                        {
-                            Id = 498,
-                            Category = 13,
-                            ShipId = 66
-                        },
-                        new
-                        {
-                            Id = 499,
-                            Category = 31,
-                            ShipId = 66
-                        },
-                        new
-                        {
-                            Id = 500,
-                            Category = 19,
-                            ShipId = 66
-                        },
-                        new
-                        {
-                            Id = 501,
-                            Category = 10,
-                            ShipId = 66
-                        },
-                        new
-                        {
-                            Id = 502,
-                            Category = 29,
-                            ShipId = 66
-                        },
-                        new
-                        {
-                            Id = 503,
-                            Category = 29,
-                            ShipId = 66
-                        },
-                        new
-                        {
-                            Id = 504,
-                            Category = 27,
-                            ShipId = 66
+                            ShipId = 22
                         });
                 });
 
