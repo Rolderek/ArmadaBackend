@@ -105,8 +105,6 @@ namespace ArmadaBackend.Controllers
         }
 
         [HttpPut]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<Card>> UpdateCard( Card newCard, int id)
         {
             var eC = _context.Cards.FirstOrDefault(c => c.Id == id);
@@ -124,6 +122,44 @@ namespace ArmadaBackend.Controllers
                 return Ok(eC);
             }
         }
+        /*
+        {
+            "name": "Imperial Star Destroyer II",
+            "factinId": 1,
+            "size": 2,
+            "point": 120,
+            "cardsType": [
+              {
+                "category": 1
+              },
+              {
+                "category": 14
+              },
+              {
+                "category": 30
+              },
+              {
+                "category": 11
+              },
+              {
+                "category": 31
+              },
+              {
+                "category": 4
+              },
+              {
+                "category": 10
+              },
+              {
+                "category": 28
+              },
+              {
+                "category": 25
+              }
+            ]
+        }
+        */
+
 
         [HttpDelete("id:int")]
         public async Task<ActionResult> DeleteCard(int id)
@@ -137,6 +173,20 @@ namespace ArmadaBackend.Controllers
             await _context.SaveChangesAsync();
             return Ok($"törölve {id}");
         }
+        /*
+        {
+        "id": 24,
+        "size": 3,
+        "factinId": 1,
+        "name": "Imperial Star Destroyer II",
+        "point": 120,
+        "cardsType": [
+          {
+            "category": 0
+          }
+            ]
+        }
+        */
 
     }
 }

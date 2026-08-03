@@ -58,6 +58,62 @@ namespace ArmadaBackend.Controllers
             return ships.IsNullOrEmpty() ? NotFound() : Ok(ships);
         }
 
+        [HttpGet("byId/{id:int}")]
+        public async Task<ActionResult<Ship>> GetById([FromRoute] int id)
+        {
+            var ship = await _context.Ships
+                .Include(s => s.CardsType)
+                .FirstOrDefaultAsync(s => s.Id == id);
 
+            return ship is null ? NotFound() : Ok(ship);
+        }   
+
+        [HttpPost("CreateNewShip")]
+        public async Task<ActionResult<Ship>> AddShip([FromBody] Ship newShip)
+        {
+            newShip.Id = 0; //biztosnági nullázás, hogy az EF core adjon neki élrtéket
+            _context.Ships.Add(newShip);
+            await _context.SaveChangesAsync();
+            return CreatedAtAction(nameof(GetById), new { id = newShip.Id }, newShip);
+        }
+
+        [HttpPut("{id:int}")]
+        public async Task<ActionResult<Ship>> UpdateShip([FromRoute] int id, [FromBody] Ship newShip)
+        {
+            if (id != newShip.Id)
+            {
+                return BadRequest("Az URL-ben lévő ID nem egyezik a módosítandó hajó ID-jával.");
+            }
+            var eS = await _context.Ships
+                .Include(s => s.CardsType)
+                .FirstOrDefaultAsync(c => c.Id == id);
+
+            if (eS == null)
+            {
+                return NotFound();
+            }
+            eS.FactinId = newShip.FactinId;
+            eS.Name = newShip.Name;
+            eS.Point = newShip.Point;
+            eS.Size = newShip.Size;
+            _context.ShipCards.RemoveRange(eS.CardsType);
+            eS.CardsType = newShip.CardsType;
+            await _context.SaveChangesAsync();
+            return Ok(eS);
+        }
+
+        [HttpDelete("{id:int}")] 
+        public async Task<ActionResult> DeleteShip([FromRoute] int id)
+        {
+            var shipToDel = await _context.Ships.FindAsync(id); 
+            if (shipToDel == null)
+            {
+                return NotFound();
+            }
+            _context.Ships.Remove(shipToDel);
+            await _context.SaveChangesAsync();
+            return NoContent(); 
+        }
     }
 }
+
