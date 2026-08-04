@@ -17,7 +17,7 @@ namespace ArmadaBackend.Controllers
         }
 
         /*
-        {
+        { //példa vadász:
             "id": 12,
             "factionId": 0,
             "squadronName": "Moldy Crow",
@@ -51,7 +51,7 @@ namespace ArmadaBackend.Controllers
         [HttpGet("GetSimilarPilotName")]
         public async Task<ActionResult<IEnumerable<SquadronCard>>> GetSimilarName([FromQuery] string name)
         {
-            var squad = await _context.SquadronCards.Where(c => c.AceName != null)
+            var squad = await _context.SquadronCards.Where(c => c.AceName != null && c.AceName != "na") //ezt a feltételt lehet át kell majd dolgozni
                 .Where(c => c.AceName.ToLower().Contains(name.ToLower())).ToListAsync();
             return squad is null ? NotFound() : Ok(squad);
         }
