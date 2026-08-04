@@ -66,14 +66,14 @@ namespace ArmadaBackend.Controllers
         [HttpGet("GetAces")]
         public async Task<ActionResult<IEnumerable<SquadronCard>>> GetAces()
         {
-            var squad = await _context.SquadronCards.Where(c => c.AceName != null).ToListAsync();
+            var squad = await _context.SquadronCards.Where(c => c.AceName != "na" && c.IsUnique == true).ToListAsync();
             return squad is null ? NotFound() : Ok(squad);
         }
 
         [HttpGet("GetRegulars")]
         public async Task<ActionResult<IEnumerable<SquadronCard>>> GetRegulars()
         {
-            var s = await _context.SquadronCards.Where(c => c.AceName == null).ToListAsync();
+            var s = await _context.SquadronCards.Where(c => c.AceName == "na" && c.IsUnique == false).ToListAsync();
             return s == null ? NotFound() : Ok(s);
         }
 

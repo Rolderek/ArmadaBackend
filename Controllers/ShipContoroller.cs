@@ -28,7 +28,8 @@ namespace ArmadaBackend.Controllers
         [HttpGet("ShipNames")]
         public async Task<ActionResult<IEnumerable<string>>> GetShipNames()
         {
-            return await _context.Ships.Select(c => c.Name).ToListAsync();
+            var names = await _context.Ships.Select(c => c.Name).ToListAsync();
+            return names is null ? NotFound() : Ok(names);
         }
 
         [HttpGet("ShipWithSimilarName{name}")]
