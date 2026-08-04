@@ -1,0 +1,23 @@
+Javaslatok a századok struktúrájához
+
+1. A SquadronCard maradjon külön törzsadat a SquadronElement flottába felvett példánytól.
+   A SquadronCard tartalmazza a kártya nevét, frakcióját, egyediségét és pontértékét,
+   míg a SquadronElement a flottához tartozást és a darabszámot tárolja.
+
+2. A SquadronElement.SquadronName szöveges mezőt érdemes később SquadronCardId
+   idegen kulcsra és SquadronCard navigációs tulajdonságra cserélni. Így nem lehet
+   elgépelni a neveket, és a pontérték mindig a törzsadatból származhat.
+
+3. A SquadronElement számára hasznos lenne egy számított összpontérték:
+   Count * SquadronCard.Point. Az egyedi kártyáknál alkalmazásszinten ellenőrizni
+   kellene, hogy a Count legfeljebb 1 legyen.
+
+4. A frakcióazonosítókat célszerű közös Faction enumba szervezni. Egy későbbi,
+   külön migrációban javítható lenne a Ship.FactinId elírása is FactionId névre.
+
+5. A nagyméretű HasData blokkokat érdemes külön EntityTypeConfiguration
+   osztályokba vagy külön seed-adatfájlokba szervezni, hogy az AppDbContext
+   OnModelCreating metódusa áttekinthető maradjon.
+
+6. A századkártyákhoz később külön lekérdező végpont készülhet, amely frakció,
+   századtípus és egyediség szerint is képes szűrni.
