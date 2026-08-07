@@ -32,4 +32,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
- 
+
+
+//connection string: "DefaultConnection": "Data Source=RESTASPC\\SQLEXPRESS;Database=Armada01;Integrated Security=True;Encrypt=True;TrustServerCertificate=True;MultipleActiveResultSets=False"
