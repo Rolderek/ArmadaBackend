@@ -11,7 +11,7 @@ namespace ArmadaBackend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CardsController :ControllerBase
+    public class CardsController : ControllerBase
     {
         private readonly AppDbContext _context;
 

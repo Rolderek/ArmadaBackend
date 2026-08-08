@@ -4,7 +4,7 @@
     {
         public int Id { get; set; }
         public string? Name { get; set; }
-        public List<FleetElement> Ships { get; set; } = new List<FleetElement>();
+        public List<Ship> Ships { get; set; } = new List<Ship>();
         public List<SquadronElement> Squadrons { get; set; } = new List<SquadronElement>();
     }
 }

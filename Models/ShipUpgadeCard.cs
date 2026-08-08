@@ -1,7 +1,7 @@
 ﻿using ArmadaBackend.Enums;
 using ArmadaBackend.Models;
 
-public class ShipCard
+public class ShipUpgadeCard
 {
     public int Id { get; set; }        
     public int ShipId { get; set; }    

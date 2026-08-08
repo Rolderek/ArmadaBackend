@@ -8,10 +8,8 @@ namespace ArmadaBackend.Data
     {
         public DbSet<Card> Cards { get; set; }
         public DbSet<Ship> Ships { get; set; }
-        public DbSet<ShipCard> ShipCards { get; set; }
+        public DbSet<ShipUpgadeCard> ShipUpgradeCards { get; set; }
         public DbSet<Fleet> Fleets { get; set; }
-        public DbSet<FleetElement> FleetElements { get; set; }
-        public DbSet<EquippedUpgrade> EquippedUpgrades { get; set; }
         public DbSet<SquadronElement> SquadronElements { get; set; }
         public DbSet<SquadronCard> SquadronCards { get; set; }
         public DbSet<ShipNameHolder> ShipNames { get; set; }
@@ -27,8 +25,8 @@ namespace ArmadaBackend.Data
             // A Fleet entitás korábbi táblanevének megőrzése.
             modelBuilder.Entity<Fleet>().ToTable("Fleet");
 
-            modelBuilder.Entity<FleetElement>()
-                .HasOne(fleetElement => fleetElement.Fleet)
+ /*           modelBuilder.Entity<Fleet>()
+                .HasMany(ship => ship.)
                 .WithMany(fleet => fleet.Ships)
                 .HasForeignKey(fleetElement => fleetElement.FleetId)
                 .OnDelete(DeleteBehavior.Cascade);
@@ -44,17 +42,7 @@ namespace ArmadaBackend.Data
                 .WithMany(fleetElement => fleetElement.EquippedUpgrades)
                 .HasForeignKey(upgrade => upgrade.FleetElementId)
                 .OnDelete(DeleteBehavior.Cascade);
-
-            modelBuilder.Entity<EquippedUpgrade>()
-                .HasOne(upgrade => upgrade.Card)
-                .WithMany()
-                .HasForeignKey(upgrade => upgrade.CardId)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            // Ugyanaz a kártya egy hajóra legfeljebb egyszer szerelhető fel.
-            modelBuilder.Entity<EquippedUpgrade>()
-                .HasIndex(upgrade => new { upgrade.FleetElementId, upgrade.CardId })
-                .IsUnique();
+ */
 
             modelBuilder.AddSeedData();
         }

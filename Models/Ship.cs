@@ -11,6 +11,8 @@ namespace ArmadaBackend.Models
         public string? Name { get; set; }
         public int Point { get; set; }
         
-        public List<ShipCard> CardsType { get; set; } = new List<ShipCard>();
+        public List<ShipUpgadeCard> EmptyUpgradeSlots { get; set; } = new List<ShipUpgadeCard>();
+
+        public List<ShipUpgadeCard> FilledUpgradeSlots { get; set; } = new List<ShipUpgadeCard>();
     }
 }

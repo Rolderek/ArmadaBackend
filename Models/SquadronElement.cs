@@ -4,7 +4,7 @@
     public class SquadronElement
     {
         public int Id { get; set; }
-        public string SquadronName { get; set; } = string.Empty;
+        public int SquadronId { get; set; }
         public int Count { get; set; }
 
         //kapcsolatok:

@@ -63,7 +63,6 @@ namespace ArmadaBackend.Controllers
         public async Task<ActionResult<Ship>> GetById([FromRoute] int id)
         {
             var ship = await _context.Ships
-                .Include(s => s.CardsType)
                 .FirstOrDefaultAsync(s => s.Id == id);
 
             return ship is null ? NotFound() : Ok(ship);
@@ -86,7 +85,6 @@ namespace ArmadaBackend.Controllers
                 return BadRequest("Az URL-ben lévő ID nem egyezik a módosítandó hajó ID-jával.");
             }
             var eS = await _context.Ships
-                .Include(s => s.CardsType)
                 .FirstOrDefaultAsync(c => c.Id == id);
 
             if (eS == null)
@@ -97,8 +95,6 @@ namespace ArmadaBackend.Controllers
             eS.Name = newShip.Name;
             eS.Point = newShip.Point;
             eS.Size = newShip.Size;
-            _context.ShipCards.RemoveRange(eS.CardsType);
-            eS.CardsType = newShip.CardsType;
             await _context.SaveChangesAsync();
             return Ok(eS);
         }
