@@ -11,7 +11,7 @@ namespace ArmadaBackend.Data
         public DbSet<ShipUpgadeCard> ShipUpgradeCards { get; set; }
         public DbSet<Fleet> Fleets { get; set; }
         public DbSet<SquadronCard> SquadronCards { get; set; }
-        public DbSet<Objectives> Objectives { get; set; }
+        public DbSet<Objectives> ObjectiveCards { get; set; }
 
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)

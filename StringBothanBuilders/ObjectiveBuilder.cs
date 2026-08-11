@@ -4,6 +4,7 @@ using System.Text;
 
 namespace ArmadaBackend.StringBotanBuilders
 // F1#TesztNév#S:3[1,30,17,20];5[35,2,7]#Q:10*3;35;42#O:A=10;D=40;N=99;
+// F1#TesztNév#S:#Q:#O: - üres lista példa
 {
     public class ObjectiveBuilder
     {
