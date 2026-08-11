@@ -4,15 +4,16 @@
     {
         public int Id { get; set; }
         public string? Name { get; set; }
-        public List<Ship> Ships { get; set; } = new List<Ship>();
-        public List<SquadronElement> Squadrons { get; set; } = new List<SquadronElement>();
+        public string Ships { get; set; } 
+        public string Squadrons { get; set; }
+        public string Objectives { get; set; }
     }
 
     /*
      * Id | FleetName |
      * one ship 000 + cards, one card 000 char - sum(6 ship with 6 cards) 108 char |
      * one squadron 000 - 60 char |
-     * objectives sum(3*2), 6 char
+     * objectives sum(4*2), 8 char
      * total 108+57+6 = 171 char
     */
 
@@ -28,7 +29,10 @@
      10*3: a 10-es squadronból három darab;
      35 és 42: egy-egy squadron;
      O: objective-ek;
-     A, D, N: Assault, Defense és Navigation.
+     A, D, N, B: Assault, Defense, Navigation és BaseDefense - Ez opcionális
+
+    F1#TesztNév#S:3[1,30,17,20];5[35,2,7]#Q:10*3;35;42#O:A=101;D=102;N=103;
+
      
     Összefoglalva:
     400 pontos flotta: 5000 karakter
