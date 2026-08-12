@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
+using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
 namespace ArmadaBackend.StringDecoders
@@ -16,15 +17,19 @@ namespace ArmadaBackend.StringDecoders
 
         public void DecodedSquadrons(string codedSquadrons)
         {
-            if (codedSquadrons == "Q:")
+            if (codedSquadrons.IsNullOrEmpty())
             {
-                Squadrons = new List<int>(); //ha üres akkor ez a lsita is üres lesz
+                throw new Exception("Üres, vagy null squadron érték!");
+            }
+            else if (codedSquadrons == "Q:")
+            {
+                this.Squadrons = new List<int>(); //ha üres akkor ez a lsita is üres lesz
             }
             string actualSquadrons = codedSquadrons[2..];
             string[] parts = actualSquadrons.Split(";");
             foreach (string p in parts)
             {
-                Squadrons.Add(int.Parse(p));
+                this.Squadrons.Add(int.Parse(p));
             }
         }
     }

@@ -13,7 +13,7 @@ namespace ArmadaBackend.StringDecoders
 
         public ObjectiveDecoder(string codedObjectives) 
         {
-            Objectives = DecodedObjectives(codedObjectives);
+            this.Objectives = DecodedObjectives(codedObjectives);
         }
  
         public List<int> DecodedObjectives(string codedObjectives)
@@ -26,8 +26,8 @@ namespace ArmadaBackend.StringDecoders
             string trimmedObjectives = codedObjectives[2..];
             string[] parts1 = trimmedObjectives.Split(";");
             string[] firstTypeAndId = parts1[0].Split("=");
-            string[] secondTypeAndId = parts1[0].Split("=");
-            string[] thirdTypeAndId = parts1[0].Split("=");
+            string[] secondTypeAndId = parts1[1].Split("=");
+            string[] thirdTypeAndId = parts1[2].Split("=");
             result.Add(int.Parse(firstTypeAndId[1]));
             result.Add(int.Parse(secondTypeAndId[1]));
             result.Add(int.Parse(thirdTypeAndId[1]));
