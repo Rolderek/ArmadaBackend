@@ -36,6 +36,24 @@ foreach(int obj in ob.Objectives)
 {
     Console.WriteLine(obj);
 }
+//-----------------visszafelé-------------------//
+List<(int ShipId, List<int> CardIds)> ships =
+[
+    (30, [1, 20, 80, 20]),
+    (40, [90, 105, 10, 11, 12]),
+    (5, [1, 2, 3, 4, 5])
+];
+
+ShipBuilder sb = new ShipBuilder(ships);
+
+List<int> squadrons = new List<int> { 60,60,60,60,65 };
+SquadronBuilder qb = new SquadronBuilder(squadrons);
+
+List<int> objectives = new List<int> { 1,2,3 };
+ObjectiveBuilder objBuilder = new ObjectiveBuilder(objectives);
+
+BuilderOfBuilders bb = new BuilderOfBuilders("Laci cuca", sb.ShipString, qb.SquadronString, objBuilder.ObjectivesString);
+Console.WriteLine($"({bb.FleetString})");
 
 
 //-----|||-----//

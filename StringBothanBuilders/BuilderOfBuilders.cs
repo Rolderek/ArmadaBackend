@@ -10,19 +10,18 @@ namespace ArmadaBackend.StringBotanBuilders
         public string Starter { get; } = "F1";
         public string FleetString { get; set; } = string.Empty;
 
+        public BuilderOfBuilders(string fleetName, string shipString, string squadronString, string objectiveString)
+        {
+            MakingFleetStringV1(fleetName, shipString, squadronString, objectiveString);
+        }
+
         public void MakingFleetStringV1(string fleetName, string shipString, string squadronString, string objectiveString)
         {
-            FleetString = $"{Starter}#{fleetName}#{shipString}#{squadronString}#{objectiveString}";
+            this.FleetString = $"{Starter}#{fleetName}#{shipString}#{squadronString}#{objectiveString}";
         }
 
 
-
-
-        public bool IsThereAnyStringValue()
-        {
-            return FleetString is null ? false : true;
-        }
     }
 
-    // F1#TesztNév#S:3[1,30,17,20];5[35,2,7]#Q:10*3;35;42#O:A=101;D=102;N=103;
+    
 }

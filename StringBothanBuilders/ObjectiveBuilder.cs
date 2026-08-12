@@ -12,6 +12,11 @@ namespace ArmadaBackend.StringBotanBuilders
 
         public string ObjectivesString { get; set; } = string.Empty;
 
+        public ObjectiveBuilder(List<int> oIds)
+        {
+            MakingObjectivesString(oIds);
+        }
+
         public void MakingObjectivesString(List<int> oIds)
         {
             StringBuilder builder = new StringBuilder(Starter);
@@ -20,7 +25,7 @@ namespace ArmadaBackend.StringBotanBuilders
             int D = oIds[1];
             int N = oIds[2];
             builder.Append($"A={A};D={D};N={N}");
-            ObjectivesString = builder.ToString();
+            this.ObjectivesString = builder.ToString();
         }
 
         public bool IsThereAnyObjective()

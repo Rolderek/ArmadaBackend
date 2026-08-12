@@ -1,4 +1,5 @@
 ﻿using ArmadaBackend.Models;
+using Microsoft.IdentityModel.Tokens;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
 
@@ -11,6 +12,11 @@ namespace ArmadaBackend.StringBotanBuilders
 
         public string SquadronString { get; set; } = string.Empty;
 
+        public SquadronBuilder(List<int> list)
+        {
+            MakingSquadronString(list);
+        }
+
         public void MakingSquadronString(List<int> sIds)
         {
             StringBuilder builder = new StringBuilder(Starter); 
@@ -22,12 +28,9 @@ namespace ArmadaBackend.StringBotanBuilders
                     builder.Append(';'); 
                 }
             }
-            SquadronString = builder.ToString();
+            this.SquadronString = builder.ToString();
         }
-        public bool IsThereAnySquadron() 
-        {
-            return SquadronString is null ? false : true;
-        }
+     
 
 
         /*
@@ -36,11 +39,11 @@ namespace ArmadaBackend.StringBotanBuilders
         */
 
         /*
-        //homokozó így máködik, 2 a-wing, 2 defender és egy Vader defender ász:
+        //2 a-wing, 2 defender és egy Vader defender ász:
         List<int> squadrons = new List<int>() { 1, 1, 61, 61, 62 };
         SquadronBuilder squadBuilder = new SquadronBuilder();
         squadBuilder.MakingSquadronString(squadrons);
-        Console.WriteLine($"{squadBuilder.SquadronString}, most a függvény: {squadBuilder.IsThereAnySquadron()}");
+        Console.WriteLine($"{squadBuilder.SquadronString}
         */
     }
 
