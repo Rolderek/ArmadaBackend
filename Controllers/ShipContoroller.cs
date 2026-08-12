@@ -3,8 +3,6 @@ using ArmadaBackend.Enums;
 using ArmadaBackend.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using System.Reflection.Metadata.Ecma335;
 
 namespace ArmadaBackend.Controllers
 {
@@ -28,20 +26,20 @@ namespace ArmadaBackend.Controllers
         [HttpGet("ShipNames")]
         public async Task<ActionResult<IEnumerable<string>>> GetShipNames()
         {
-            var names = await _context.Ships.Select(c => c.Name).ToListAsync();
-            return names is null ? NotFound() : Ok(names);
+            var names = await _context.Ships
+                .Where(c => c.Name != null)
+                .Select(c => c.Name!)
+                .ToListAsync();
+            return Ok(names);
         }
 
-        [HttpGet("ShipWithSimilarName{name}")]
-        public async Task<ActionResult<IEnumerable<Ship>>> GetShipWithSimilarName(string name)
+        [HttpGet("ShipWithSimilarName/{name}")]
+        public async Task<ActionResult<IEnumerable<Ship>>> GetShipWithSimilarName([FromRoute] string name)
         {
-            var ships = await _context.Ships.Where(
-                c => c.Name.ToLower().Contains(name.ToLower())).ToListAsync();
-            if (ships != null)
-            {
-                return Ok(ships);
-            }
-            return NotFound();
+            var ships = await _context.Ships
+                .Where(c => c.Name != null && EF.Functions.Like(c.Name, $"%{name}%"))
+                .ToListAsync();
+            return Ok(ships);
         }
 
         //ennek megadjuk melyik frakciót akarjuk és azokat adja vissza, nincs duplikált metódus
@@ -49,14 +47,14 @@ namespace ArmadaBackend.Controllers
         public async Task<ActionResult<IEnumerable<Ship>>> GetAllShipInOneFaction([FromRoute] int cat)
         {
             var ships = await _context.Ships.Where(c => c.FactinId == cat).ToListAsync();
-            return ships.IsNullOrEmpty() ? NotFound() : Ok(ships);
+            return Ok(ships);
         }
 
         [HttpGet("ShipsBySize/{size:int}")]
         public async Task<ActionResult<IEnumerable<Ship>>> GetShipsBySize([FromRoute] int size)
         {
             var ships = await _context.Ships.Where(c => c.Size == (ShipSize)size).ToListAsync();
-            return ships.IsNullOrEmpty() ? NotFound() : Ok(ships);
+            return Ok(ships);
         }
 
         [HttpGet("byId/{id:int}")]

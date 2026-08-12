@@ -1,7 +1,15 @@
 using ArmadaBackend.Data;
 using ArmadaBackend.StringBotanBuilders;
-using System.Text.Json.Serialization;
+using ArmadaBackend.StringDecoders;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
+
+
+//homokozó:
+string fleetCode = "F1#TesztNév#S:3[1,30,17,20];5[35,2,7]#Q:10;10;10;35;42#O:A=10;D=40;N=99;";
+SeparateForTypes s = new SeparateForTypes(fleetCode);
+Console.WriteLine($"({s.Version}), ({s.Name}), ({s.Ships}), ({s.Squadrons}), ({s.Objectives})");
+//-----|||-----//
 
 var builder = WebApplication.CreateBuilder(args);
 

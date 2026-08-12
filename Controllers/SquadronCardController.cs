@@ -38,7 +38,7 @@ namespace ArmadaBackend.Controllers
         public async Task<ActionResult<IEnumerable<SquadronCard>>> GetByFaction([FromQuery] int id)
         {
             var squadrons = await _context.SquadronCards.Where(c => c.FactionId == id).ToListAsync();
-            return squadrons is null ? NotFound() : Ok(squadrons);
+            return Ok(squadrons);
         }
 
         [HttpGet("GetByThisId")]
@@ -51,30 +51,35 @@ namespace ArmadaBackend.Controllers
         [HttpGet("GetSimilarPilotName")]
         public async Task<ActionResult<IEnumerable<SquadronCard>>> GetSimilarName([FromQuery] string name)
         {
-            var squad = await _context.SquadronCards.Where(c => c.AceName != null && c.AceName != "na") //ezt a feltételt lehet át kell majd dolgozni
-                .Where(c => c.AceName.ToLower().Contains(name.ToLower())).ToListAsync();
-            return squad is null ? NotFound() : Ok(squad);
+            var squad = await _context.SquadronCards
+                .Where(c => c.AceName != null &&
+                            c.AceName != "na" &&
+                            EF.Functions.Like(c.AceName, $"%{name}%"))
+                .ToListAsync();
+            return Ok(squad);
         }
 
         [HttpGet("GetSimilarSquadronName")]
         public async Task<ActionResult<IEnumerable<SquadronCard>>> GetSimilarSquadronName([FromQuery] string name)
         {
-            var squad = await _context.SquadronCards.Where(c => c.SquadronName.ToLower().Contains(name.ToLower())).ToListAsync();
-            return squad is null ? NotFound() : Ok(squad);
+            var squad = await _context.SquadronCards
+                .Where(c => EF.Functions.Like(c.SquadronName, $"%{name}%"))
+                .ToListAsync();
+            return Ok(squad);
         }
 
         [HttpGet("GetAces")]
         public async Task<ActionResult<IEnumerable<SquadronCard>>> GetAces()
         {
             var squad = await _context.SquadronCards.Where(c => c.AceName != "na" && c.IsUnique == true).ToListAsync();
-            return squad is null ? NotFound() : Ok(squad);
+            return Ok(squad);
         }
 
         [HttpGet("GetRegulars")]
         public async Task<ActionResult<IEnumerable<SquadronCard>>> GetRegulars()
         {
             var s = await _context.SquadronCards.Where(c => c.AceName == "na" && c.IsUnique == false).ToListAsync();
-            return s == null ? NotFound() : Ok(s);
+            return Ok(s);
         }
 
         [HttpPost("CreateNewSquadron")]
@@ -99,6 +104,7 @@ namespace ArmadaBackend.Controllers
                 eS.SquadronName = newSquadron.SquadronName;
                 eS.AceName = newSquadron.AceName;
                 eS.IsUnique = newSquadron.IsUnique;
+                eS.IsUniqueShip = newSquadron.IsUniqueShip;
                 eS.Point = newSquadron.Point;
                 await _context.SaveChangesAsync();
                 return Ok(eS);

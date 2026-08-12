@@ -4,9 +4,9 @@
     {
         public int Id { get; set; }
         public string? Name { get; set; }
-        public string Ships { get; set; } 
-        public string Squadrons { get; set; }
-        public string Objectives { get; set; }
+        public string Ships { get; set; } = string.Empty;
+        public string Squadrons { get; set; } = string.Empty;
+        public string Objectives { get; set; } = string.Empty;
     }
 
     /*

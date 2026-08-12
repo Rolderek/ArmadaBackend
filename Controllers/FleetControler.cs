@@ -60,6 +60,7 @@ namespace ArmadaBackend.Controllers
             existingFleet.Name = updatedFleet.Name;
             existingFleet.Ships = updatedFleet.Ships;
             existingFleet.Squadrons = updatedFleet.Squadrons;
+            existingFleet.Objectives = updatedFleet.Objectives;
 
             await _context.SaveChangesAsync();
             return Ok(existingFleet);

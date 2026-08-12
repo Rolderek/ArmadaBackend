@@ -1,11 +1,8 @@
 ﻿using ArmadaBackend.Data;
 using ArmadaBackend.Enums;
 using ArmadaBackend.Models;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection.Metadata.Ecma335;
-using RouteAttribute = Microsoft.AspNetCore.Mvc.RouteAttribute;
 
 namespace ArmadaBackend.Controllers
 {
@@ -26,12 +23,12 @@ namespace ArmadaBackend.Controllers
             return await _context.Cards.ToListAsync();
         }
 
-        [HttpGet("NameContains{name}")]
-        public async Task<ActionResult<IEnumerable<Card>>> GetAllCard(string name)
+        [HttpGet("NameContains/{name}")]
+        public async Task<ActionResult<IEnumerable<Card>>> GetAllCard([FromRoute] string name)
         {
-            return await _context.Cards.Where(
-                c => c.Name.ToLower().Contains(name.ToLower())
-                ).ToListAsync();
+            return await _context.Cards
+                .Where(c => c.Name != null && EF.Functions.Like(c.Name, $"%{name}%"))
+                .ToListAsync();
         }
 
         [HttpGet("rebel")]
@@ -104,8 +101,8 @@ namespace ArmadaBackend.Controllers
             return CreatedAtAction(nameof(GetCardById), new { id = newCard.Id }, newCard);
         }
 
-        [HttpPut]
-        public async Task<ActionResult<Card>> UpdateCard( Card newCard, int id)
+        [HttpPut("{id:int}")]
+        public async Task<ActionResult<Card>> UpdateCard([FromRoute] int id, [FromBody] Card newCard)
         {
             var eC = _context.Cards.FirstOrDefault(c => c.Id == id);
             if (eC == null)
@@ -161,8 +158,8 @@ namespace ArmadaBackend.Controllers
         */
 
 
-        [HttpDelete("id:int")]
-        public async Task<ActionResult> DeleteCard(int id)
+        [HttpDelete("{id:int}")]
+        public async Task<ActionResult> DeleteCard([FromRoute] int id)
         {
             var cardToDel = await _context.Cards.FirstOrDefaultAsync(c => c.Id == id);
             if (cardToDel == null)

@@ -21,11 +21,11 @@ namespace ArmadaBackend.Controllers
         public async Task<ActionResult<IEnumerable<Objectives>>> GetAll()
         {
             var objectives = await _context.ObjectiveCards.ToListAsync();
-            return objectives is null ? NotFound() : Ok(objectives);
+            return Ok(objectives);
         }
 
         [HttpGet("GetById/{id:int}")]
-        public async Task<ActionResult<Objectives>> GetById([FromQuery] int id)
+        public async Task<ActionResult<Objectives>> GetById([FromRoute] int id)
         {
             var objective = await _context.ObjectiveCards.FirstOrDefaultAsync(o => o.Id == id);
             return objective is null ? NotFound() : Ok(objective);
@@ -45,7 +45,7 @@ namespace ArmadaBackend.Controllers
             return Ok(objectives);
         }
 
-        [HttpPost("CreateNewSquadron")]
+        [HttpPost("CreateNewObjective")]
         public async Task<ActionResult<Objectives>> CreateObjectiveCard([FromBody] Objectives newObj)
         {
             //ide lehet kell majd egy null ellenőrzés, de nem biztos
@@ -55,38 +55,39 @@ namespace ArmadaBackend.Controllers
         }
 
         [HttpPut("ModifyThis/{id:int}")]
-        public async Task<ActionResult<Objectives>> ModifyObjective([FromBody] Objectives newObj, [FromQuery] int id)
+        public async Task<ActionResult<Objectives>> ModifyObjective(
+            [FromRoute] int id,
+            [FromBody] ObjectiveUpdateDto newObj)
         {
             var eO = await _context.ObjectiveCards.FirstOrDefaultAsync(o => o.Id == id);
             if (eO is null)
             {
                 return NotFound();
             }
-            else
+
+            if (newObj.Name is not null && newObj.Name != eO.Name)
             {
-                if (newObj.Name != null && newObj.Name != eO.Name)
-                {
-                    eO.Name = newObj.Name;
-                }
-                if (newObj.Category != null && newObj.Category != eO.Category)
-                {
-                    eO.Category = newObj.Category;
-                }
-                if (newObj.Description != null && newObj.Description != eO.Description)
-                {
-                    eO.Description = newObj.Description;
-                }
-                if (newObj.Point != null && newObj.Point != eO.Point)
-                {
-                    eO.Point = newObj.Point;
-                }
-                await _context.SaveChangesAsync();
-                return Ok(eO);
-            }        
+                eO.Name = newObj.Name;
+            }
+            if (newObj.Category.HasValue && newObj.Category.Value != eO.Category)
+            {
+                eO.Category = newObj.Category.Value;
+            }
+            if (newObj.Description is not null && newObj.Description != eO.Description)
+            {
+                eO.Description = newObj.Description;
+            }
+            if (newObj.Point.HasValue && newObj.Point.Value != eO.Point)
+            {
+                eO.Point = newObj.Point.Value;
+            }
+
+            await _context.SaveChangesAsync();
+            return Ok(eO);
         }
 
         [HttpDelete("DeleteById/{id:int}")]
-        public async Task<ActionResult<IEnumerable<Objectives>>> DeleteById([FromQuery] int id)
+        public async Task<IActionResult> DeleteById([FromRoute] int id)
         {
             var objToDel = await _context.ObjectiveCards.FirstOrDefaultAsync(o => o.Id == id);
             if ( objToDel is null )

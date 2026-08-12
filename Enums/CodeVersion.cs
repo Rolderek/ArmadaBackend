@@ -2,8 +2,8 @@
 {
     public enum CodeVersion
     {
-        F1, // alapértelmezett
-        L1, // Laci féle
-        A1  // Andris féle
+        F1 = '#',
+        L1 = '|',
+        A1 = '&'
     }
 }
