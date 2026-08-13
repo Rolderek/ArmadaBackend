@@ -12,6 +12,25 @@ namespace ArmadaBackend.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.Sql(
+                """
+                IF NOT EXISTS (SELECT 1 FROM [Cards] WHERE [Id] = 1)
+                BEGIN
+                    SET IDENTITY_INSERT [Cards] ON;
+
+                    INSERT INTO [Cards] ([Id], [Category], [Description], [Name], [Point])
+                    VALUES (
+                        1,
+                        0,
+                        'Before a friendly ship''s Attack step, it may choose to attack from only its left and right hull zones this round. If it does, it may add 2 red dice to its attack pool while attacking a ship.',
+                        'Admiral Ackbar',
+                        38
+                    );
+
+                    SET IDENTITY_INSERT [Cards] OFF;
+                END;
+                """);
+
             migrationBuilder.DropTable(
                 name: "EquippedUpgrades");
 
