@@ -52,8 +52,8 @@ SquadronBuilder qb = new SquadronBuilder(squadrons);
 List<int> objectives = new List<int> { 1,2,3 };
 ObjectiveBuilder objBuilder = new ObjectiveBuilder(objectives);
 
-BuilderOfBuilders bb = new BuilderOfBuilders("Laci cuca", sb.ShipString, qb.SquadronString, objBuilder.ObjectivesString);
-Console.WriteLine($"({bb.FleetString})");
+//BuilderOfBuilders bb = new BuilderOfBuilders("Laci cuca", sb.ShipString, qb.SquadronString, objBuilder.ObjectivesString);
+//Console.WriteLine($"({bb.FleetString})");
 
 
 //-----|||-----//

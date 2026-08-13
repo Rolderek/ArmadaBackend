@@ -94,13 +94,14 @@ namespace ArmadaBackend.Controllers
         }
 
         [HttpGet("GetForDecoder")]
-        public async Task<ActionResult<IEnumerable<Card>>> GetForDecoder([FromRoute] List<int> c)
+        public async Task<ActionResult<IEnumerable<Card>>> GetForDecoder([FromQuery] List<int> c)
         {
             if (c.Count == 0)
             {
                 return BadRequest("Üres a lsita");
             }
-            var cards = await _context.Cards.Where(cards => c.Contains(cards.Id))
+            var cards = await _context.Cards
+                .Where(cards => c.Contains(cards.Id))
                 .ToListAsync();
             //egyszer adja vissza mindet
             return Ok(cards);

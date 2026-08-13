@@ -1,4 +1,5 @@
 ﻿using ArmadaBackend.Enums;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ArmadaBackend.Models
 {
@@ -10,9 +11,10 @@ namespace ArmadaBackend.Models
         public int FactinId { get; set; }
         public string? Name { get; set; }
         public int Point { get; set; }
-        
-        public List<ShipUpgadeCard> EmptyUpgradeSlots { get; set; } = new List<ShipUpgadeCard>();
 
+        [NotMapped]
+        public List<ShipUpgadeCard> EmptyUpgradeSlots { get; set; } = new List<ShipUpgadeCard>();
+        [NotMapped]
         public List<ShipUpgadeCard> FilledUpgradeSlots { get; set; } = new List<ShipUpgadeCard>();
     }
 }

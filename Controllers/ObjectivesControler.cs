@@ -54,38 +54,6 @@ namespace ArmadaBackend.Controllers
             return CreatedAtAction(nameof(GetById), new { id = newObj.Id }, newObj);
         }
 
-        [HttpPut("ModifyThis/{id:int}")]
-        public async Task<ActionResult<Objectives>> ModifyObjective(
-            [FromRoute] int id,
-            [FromBody] ObjectiveUpdateDto newObj)
-        {
-            var eO = await _context.ObjectiveCards.FirstOrDefaultAsync(o => o.Id == id);
-            if (eO is null)
-            {
-                return NotFound();
-            }
-
-            if (newObj.Name is not null && newObj.Name != eO.Name)
-            {
-                eO.Name = newObj.Name;
-            }
-            if (newObj.Category.HasValue && newObj.Category.Value != eO.Category)
-            {
-                eO.Category = newObj.Category.Value;
-            }
-            if (newObj.Description is not null && newObj.Description != eO.Description)
-            {
-                eO.Description = newObj.Description;
-            }
-            if (newObj.Point.HasValue && newObj.Point.Value != eO.Point)
-            {
-                eO.Point = newObj.Point.Value;
-            }
-
-            await _context.SaveChangesAsync();
-            return Ok(eO);
-        }
-
         [HttpDelete("DeleteById/{id:int}")]
         public async Task<IActionResult> DeleteById([FromRoute] int id)
         {
