@@ -7,11 +7,11 @@ namespace ArmadaBackend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class FleetControler : ControllerBase
+    public class FleetController : ControllerBase
     {
         private readonly AppDbContext _context;
 
-        public FleetControler(AppDbContext context)
+        public FleetController(AppDbContext context)
         {
             _context = context;
         }
