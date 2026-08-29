@@ -1,8 +1,10 @@
 ﻿using ArmadaBackend.Data;
 using ArmadaBackend.Enums;
 using ArmadaBackend.Models;
+using ArmadaBackend.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using static ArmadaBackend.Services.DataTranferObjects.Ships;
 
 namespace ArmadaBackend.Controllers
 {
@@ -10,104 +12,84 @@ namespace ArmadaBackend.Controllers
     [ApiController]
     public class ShipContoroller : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly IShipService _service;
 
-        public ShipContoroller(AppDbContext context)
+        public ShipContoroller(IShipService service)
         {
-            _context = context;
+            _service = service;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Ship>>> GetAllShip()
+        public async Task<ActionResult<IReadOnlyList<ShipDto>>> GetAllShip(CancellationToken ctn)
         {
-            return await _context.Ships.ToListAsync();
+            var ship = await _service.GetAllAsync(ctn);
+            return Ok(ship);
         }
 
         [HttpGet("ShipNames")]
-        public async Task<ActionResult<IEnumerable<string>>> GetShipNames()
+        public async Task<ActionResult<IReadOnlyList<string>>> GetShipNames(CancellationToken ctn)
         {
-            var names = await _context.Ships
-                .Where(c => c.Name != null)
-                .Select(c => c.Name!)
-                .ToListAsync();
+            var names = await _service.GetShipNames(ctn);
             return Ok(names);
+
         }
 
         [HttpGet("ShipWithSimilarName/{name}")]
-        public async Task<ActionResult<IEnumerable<Ship>>> GetShipWithSimilarName([FromRoute] string name)
+        public async Task<ActionResult<IEnumerable<Ship>>> GetShipWithSimilarName([FromRoute] string name, CancellationToken ctn)
         {
-            var ships = await _context.Ships
-                .Where(c => c.Name != null && EF.Functions.Like(c.Name, $"%{name}%"))
-                .ToListAsync();
+            var ships = await _service.GetShipWithSimilarName(name, ctn);
             return Ok(ships);
         }
 
         //ennek megadjuk melyik frakciót akarjuk és azokat adja vissza, nincs duplikált metódus
         [HttpGet("ShipINOneFaction/{cat:int}")]
-        public async Task<ActionResult<IEnumerable<Ship>>> GetAllShipInOneFaction([FromRoute] int cat)
+        public async Task<ActionResult<IEnumerable<Ship>>> GetAllShipInOneFaction([FromRoute] int cat, CancellationToken ctn)
         {
-            var ships = await _context.Ships.Where(c => c.FactinId == cat).ToListAsync();
+            var ships = await _service.GetAllShipInOneFaction(cat, ctn);
             return Ok(ships);
         }
 
         [HttpGet("ShipsBySize/{size:int}")]
-        public async Task<ActionResult<IEnumerable<Ship>>> GetShipsBySize([FromRoute] int size)
+        public async Task<ActionResult<IEnumerable<Ship>>> GetShipsBySize([FromRoute] int size, CancellationToken ctn)
         {
-            var ships = await _context.Ships.Where(c => c.Size == (ShipSize)size).ToListAsync();
+            var ships = await _service.GetShipsBySize(size, ctn);
             return Ok(ships);
         }
 
         [HttpGet("byId/{id:int}")]
-        public async Task<ActionResult<Ship>> GetById([FromRoute] int id)
+        public async Task<ActionResult<Ship>> GetById([FromRoute] int id, CancellationToken ctn)
         {
-            var ship = await _context.Ships
-                .FirstOrDefaultAsync(s => s.Id == id);
+            var ship = await _service.GetByIdAsync(id, ctn);
 
             return ship is null ? NotFound() : Ok(ship);
         }   
 
         [HttpPost("CreateNewShip")]
-        public async Task<ActionResult<Ship>> AddShip([FromBody] Ship newShip)
+        public async Task<ActionResult<Ship>> AddShip([FromBody] CreateShipRequest newShip, CancellationToken ctn)
         {
-            newShip.Id = 0; //biztosnági nullázás, hogy az EF core adjon neki élrtéket
-            _context.Ships.Add(newShip);
-            await _context.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetById), new { id = newShip.Id }, newShip);
+            await _service.CreateAsync(newShip, ctn);
+            return CreatedAtAction(nameof(GetById), newShip);
         }
 
         [HttpPut("{id:int}")]
-        public async Task<ActionResult<Ship>> UpdateShip([FromRoute] int id, [FromBody] Ship newShip)
+        public async Task<ActionResult<Ship>> UpdateShip([FromRoute] int id, [FromBody] UpdateShipRequest newShip, CancellationToken ctn)
         {
-            if (id != newShip.Id)
+            bool result = await _service.UpdateAsync(id, newShip, ctn);
+            if (result == true)
             {
-                return BadRequest("Az URL-ben lévő ID nem egyezik a módosítandó hajó ID-jával.");
+                return Ok(newShip);
             }
-            var eS = await _context.Ships
-                .FirstOrDefaultAsync(c => c.Id == id);
-
-            if (eS == null)
+            else
             {
-                return NotFound();
+                return BadRequest();
             }
-            eS.FactinId = newShip.FactinId;
-            eS.Name = newShip.Name;
-            eS.Point = newShip.Point;
-            eS.Size = newShip.Size;
-            await _context.SaveChangesAsync();
-            return Ok(eS);
         }
 
         [HttpDelete("{id:int}")] 
-        public async Task<ActionResult> DeleteShip([FromRoute] int id)
+        public async Task<ActionResult> DeleteShip([FromRoute] int id, CancellationToken ctn)
         {
-            var shipToDel = await _context.Ships.FindAsync(id); 
-            if (shipToDel == null)
-            {
-                return NotFound();
-            }
-            _context.Ships.Remove(shipToDel);
-            await _context.SaveChangesAsync();
-            return NoContent(); 
+            bool result = await _service.DeleteAsyn(id, ctn);
+            return result == true ? NotFound() : Ok(result);
         }
     }
 }

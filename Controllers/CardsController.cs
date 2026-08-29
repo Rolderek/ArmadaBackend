@@ -1,7 +1,6 @@
 ﻿using ArmadaBackend.Data;
 using ArmadaBackend.Enums;
 using ArmadaBackend.Models;
-using ArmadaBackend.Services.GetServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,18 +11,16 @@ namespace ArmadaBackend.Controllers
     public class CardsController : ControllerBase
     {
         private readonly AppDbContext _context;
-        private readonly UpgradeCardsGetFromDB _upgradeCardsGetFromDB;
 
-        public CardsController(AppDbContext context, UpgradeCardsGetFromDB upgradeCardsGetFromDB)
+        public CardsController(AppDbContext context)
         {
             _context = context;
-            _upgradeCardsGetFromDB = upgradeCardsGetFromDB;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Card>>> GetAllCard()
         {
-            //return await _upgradeCardsGetFromDB.GetAllCards(); //??????
+            
             return await _context.Cards.ToListAsync();
         }
 
