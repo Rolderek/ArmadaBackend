@@ -97,7 +97,7 @@ namespace ArmadaBackend.Services
         {
             return await _context.Ships
                 .Where(c => c.Name != null && EF.Functions.Like(c.Name, $"%{name}%"))
-                .ToListAsync();
+                .ToListAsync(ctn);
         }
 
         public async Task<ActionResult<IEnumerable<Ship>>> GetAllShipInOneFaction(int cat, CancellationToken ctn)

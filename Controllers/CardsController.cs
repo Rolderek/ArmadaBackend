@@ -1,8 +1,11 @@
 ﻿using ArmadaBackend.Data;
 using ArmadaBackend.Enums;
 using ArmadaBackend.Models;
+using ArmadaBackend.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Metadata.Ecma335;
+using static ArmadaBackend.Services.DataTranferObjects.Cards;
 
 namespace ArmadaBackend.Controllers
 {
@@ -10,129 +13,96 @@ namespace ArmadaBackend.Controllers
     [ApiController]
     public class CardsController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly ICardService _service;
 
-        public CardsController(AppDbContext context)
+        public CardsController(ICardService service)
         {
-            _context = context;
+            _service = service;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Card>>> GetAllCard()
+        public async Task<ActionResult<IEnumerable<CardDto>>> GetAllCard(CancellationToken ctn)
         {
-            
-            return await _context.Cards.ToListAsync();
+            var cards = await _service.GetAllAsync(ctn);
+            return Ok(cards);
         }
 
         [HttpGet("NameContains/{name}")]
-        public async Task<ActionResult<IEnumerable<Card>>> GetAllCard([FromRoute] string name)
+        public async Task<ActionResult<IEnumerable<Card>>> GetShipWithSimilarName([FromRoute] string name, CancellationToken ctn)
         {
-            return await _context.Cards
-                .Where(c => c.Name != null && EF.Functions.Like(c.Name, $"%{name}%"))
-                .ToListAsync();
+            var cards = await _service.GetCardWithSimilarNameAsync(name, ctn);
+            return Ok(cards);
         }
 
         [HttpGet("rebel")]
-        public async Task<ActionResult<IEnumerable<Card>>> GetRebelCards()
+        public async Task<ActionResult<IEnumerable<Card>>> GetRebelCards(CancellationToken ctn)
         {
-            return await _context.Cards.Where(
-                c => c.Category == CardCategory.CommanderRebel ||
-                c.Category == CardCategory.OfficerRebel ||
-                c.Category == CardCategory.TitleRebel)
-                .ToListAsync();
+            var cards = await _service.GetRebelCardsAsync(ctn);
+            return Ok(cards);
         }
 
         [HttpGet("imperial")]
-        public async Task<ActionResult<IEnumerable<Card>>> GetImperialCards()
+        public async Task<ActionResult<IEnumerable<Card>>> GetImperialCards(CancellationToken ctn)
         {
-            return await _context.Cards.Where(
-                c => c.Category == CardCategory.CommanderImperial ||
-                c.Category == CardCategory.OfficerImperial ||
-                c.Category == CardCategory.TitleImperial ||
-                c.Category == CardCategory.SuperweaponImperial)
-                .ToListAsync();
+            var cards = await _service.GetImperialCardsAsync(ctn);
+            return Ok(cards);
         }
 
         [HttpGet("GAR")]
-        public async Task<ActionResult<IEnumerable<Card>>> GetGARCards()
+        public async Task<ActionResult<IEnumerable<Card>>> GetGARCards(CancellationToken ctn)
         {
-            return await _context.Cards.Where(
-                c => c.Category == CardCategory.CommanderGAR ||
-                c.Category == CardCategory.OfficerGAR ||
-                c.Category == CardCategory.TitleGAR ||
-                c.Category == (CardCategory)5 ||
-                c.Category == (CardCategory)8 ||
-                c.Category == (CardCategory)29
-                )
-                .ToListAsync();
+            var cards = await _service.GetGARCardsAsync(ctn);
+            return Ok(cards);
         }
 
         [HttpGet("CIS")]
-        public async Task<ActionResult<IEnumerable<Card>>> GetCISCards()
+        public async Task<ActionResult<IEnumerable<Card>>> GetCISCards(CancellationToken ctn)
         {
-            return await _context.Cards.Where(
-                c => c.Category == (CardCategory)3 ||
-                    c.Category == (CardCategory)5 ||
-                    c.Category == (CardCategory)8 ||
-                    c.Category == (CardCategory)13 ||
-                    c.Category == (CardCategory)18 ||
-                    c.Category == (CardCategory)23 ||
-                    c.Category == (CardCategory)27 ||
-                    c.Category == (CardCategory)29
-                )
-                .ToListAsync();
+            var cards = await _service.GetCISCardsAsync(ctn);
+            return Ok(cards);
         }
 
         [HttpGet("category/{id:int}")]
-        public async Task<ActionResult<IEnumerable<Card>>> GetAllCardFromThisCategory([FromRoute] int id)
+        public async Task<ActionResult<IEnumerable<Card>>> GetAllCardFromThisCategory([FromRoute] int id, CancellationToken ctn)
         {
-            return await _context.Cards.Where(c => c.Category == (CardCategory)id).ToListAsync();
+            var cards = await _service.GetAllCardFromThisCategoryAsync(id, ctn);
+            return Ok(cards);
         }
+
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<IEnumerable<Card>>> GetCardById([FromRoute] int id)
+        public async Task<ActionResult<CardDto>> GetCardById([FromRoute] int id, CancellationToken ctn)
         {
-            return await _context.Cards.Where(c => c.Id == id).ToListAsync();
+            var card = await _service.GetByIdAsync(id, ctn);
+            if (card != null)
+            {
+                return Ok(card);
+            }
+            return NotFound($"A keresett kártya nem található! {id}");
         }
 
         [HttpGet("GetForDecoder")]
-        public async Task<ActionResult<IEnumerable<Card>>> GetForDecoder([FromQuery] List<int> c)
+        public async Task<ActionResult<IEnumerable<Card>>> GetForDecoder([FromQuery] List<int> c, CancellationToken ctn)
         {
             if (c.Count == 0)
             {
                 return BadRequest("Üres a lsita");
             }
-            var cards = await _context.Cards
-                .Where(cards => c.Contains(cards.Id))
-                .ToListAsync();
-            //egyszer adja vissza mindet
+            var cards = await _service.GetForDecoder(c, ctn);
             return Ok(cards);
         }
 
         [HttpPost]
-        public async Task<ActionResult<Card>> AddCard([FromBody] Card newCard)
+        public async Task<ActionResult<CardDto>> AddCard([FromBody] CreateCardRequest request, CancellationToken ctn)
         {
-            _context.Cards.Add(newCard);
-            await _context.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetCardById), new { id = newCard.Id }, newCard);
+            var card = await _service.CreateAsync(request, ctn);
+            return card != null ? Ok(card) : BadRequest("Nem sikerült hozzáadni!");
         }
 
         [HttpPut("{id:int}")]
-        public async Task<ActionResult<Card>> UpdateCard([FromRoute] int id, [FromBody] Card newCard)
+        public async Task<ActionResult<bool>> UpdateCard([FromRoute] int id, [FromBody] UpdateCardRequest request, CancellationToken ctn)
         {
-            var eC = _context.Cards.FirstOrDefault(c => c.Id == id);
-            if (eC == null)
-            {
-                return NotFound();
-            }
-            else 
-            {
-                eC.Category = newCard.Category;
-                eC.Name = newCard.Name;
-                eC.Description = newCard.Description;
-                eC.Point = newCard.Point;
-                await _context.SaveChangesAsync();
-                return Ok(eC);
-            }
+            var result = await _service.UpdateAsync(id, request, ctn);
+            return result ? Ok($"Sikeresen módosítuk a {id} azonosítójú kártyát.") : BadRequest("Nincs ilyen azonosítójú kártya!)");
         }
         /*
         {
@@ -174,16 +144,10 @@ namespace ArmadaBackend.Controllers
 
 
         [HttpDelete("{id:int}")]
-        public async Task<ActionResult> DeleteCard([FromRoute] int id)
+        public async Task<ActionResult> DeleteCard([FromRoute] int id, CancellationToken ctn)
         {
-            var cardToDel = await _context.Cards.FirstOrDefaultAsync(c => c.Id == id);
-            if (cardToDel == null)
-            {
-                return NotFound();
-            }
-            _context.Cards.Remove(cardToDel);
-            await _context.SaveChangesAsync();
-            return Ok($"törölve {id}");
+            var  result = await _service.DeleteAsync(id, ctn);
+            return result ? Ok($"A {id} sorszámú kártya törölve!") : NotFound($"A {id} sorszámú kártya nem található!");
         }
         /*
         {

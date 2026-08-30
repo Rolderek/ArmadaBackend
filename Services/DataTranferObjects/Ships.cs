@@ -17,6 +17,7 @@ namespace ArmadaBackend.Services.DataTranferObjects
             int FactionId,
             ShipSize Size,
             int Point);
+
         public sealed record UpdateShipRequest(
             string? Name,
             int FactionId,
