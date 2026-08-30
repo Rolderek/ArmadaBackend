@@ -1,9 +1,6 @@
-﻿using ArmadaBackend.Data;
-using ArmadaBackend.Enums;
-using ArmadaBackend.Models;
+﻿using ArmadaBackend.Models;
 using ArmadaBackend.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using static ArmadaBackend.Services.DataTranferObjects.Ships;
 
 namespace ArmadaBackend.Controllers

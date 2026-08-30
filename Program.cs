@@ -76,7 +76,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+//service-ek regisztrálása:
 builder.Services.AddScoped<IShipService, ShipService>();
+builder.Services.AddScoped<ICardService, CardService>();
 
 var app = builder.Build();
 

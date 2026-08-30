@@ -6,7 +6,6 @@ using ArmadaBackend.Services.Interfaces;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using static ArmadaBackend.Services.DataTranferObjects.Cards;
-using static ArmadaBackend.Services.DataTranferObjects.Ships;
 
 namespace ArmadaBackend.Services
 {

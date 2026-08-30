@@ -21,6 +21,6 @@ namespace ArmadaBackend.Services.DataTranferObjects
             CardCategory category,
             string Name,
             string Description,
-            int Point););
+            int Point);
     }
 }
